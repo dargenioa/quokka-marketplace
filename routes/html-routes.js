@@ -22,4 +22,9 @@ router.get("/members", authenticated, function (req, res) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
 });
 
+router.get("*", authenticated, function (req, res) {
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
+});
+
+
 module.exports = router;
