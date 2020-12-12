@@ -18,7 +18,11 @@ router.post("/api/signup", function(req, res) {
         email: req.body.email,
         password: req.body.password
     }).then(function(){
+<<<<<<< HEAD
         res.redirect(307, "login");
+=======
+        res.redirect(307, "/api/login");
+>>>>>>> 3f10544626b1ca24ed5057145bff661fcf725093
     }).catch(function(err) {
         res.status(401).json(err);
     });
