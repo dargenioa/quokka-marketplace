@@ -1,6 +1,10 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const router = require("express").Router();
+require('dotenv').config();
+
+const apiKey = process.env.API_KEY;
+console.log(apiKey);
 
 router.get("/api/user_data", function(req, res) {
     if (!req.user) {
