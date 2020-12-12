@@ -1,10 +1,9 @@
 const express = require('express');
-const session = require('express-session');
 const htmlRoutes = require('./routes/html-routes');
 const apiRoutes = require('./routes/api-routes');
 const db = require('./models');
-const passport = require("./config/passport");
-
+const passport = require('./config/passport');
+const session = require("express-session");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
