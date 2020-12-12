@@ -2,7 +2,7 @@ const db = require("../models");
 const passport = require("../config/passport");
 const router = require("express").Router();
 
-router.get("/api/user", function(req, res) {
+router.get("/api/user_data", function(req, res) {
     if (!req.user) {
         res.json({});
     } else {
