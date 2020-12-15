@@ -9,25 +9,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Lobster&display=swap"
         rel="stylesheet">
-        <!------------------------- Css Link  ------------------------->
+        <!------------------------- CSS Links ------------------------->
 
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Login</title>
+    <title>Portfolio</title>
 </head>
 
 <body>
+    <!------------------------- Navbar ------------------------->
     <header>
-
-        <!------------------------- Navbr ------------------------->
-
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container-fluid">
+                <!------------------------- Brand Name ------------------------->
                 <a class="navbar-brand" id="brandname" href="index.html">Quokka Marketplace</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
+                <!------------------------- Options ------------------------->
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -48,12 +50,16 @@
                             </ul>
                         </li>
                     </ul>
+
+                    <!------------------------- Search bar ------------------------->
                     <form class="d-flex" id="search">
                         <input class="form-control me-2" type="search" placeholder="Search Products"
                             aria-label="Search">
                         <button type="submit" class="btn btn-primary">Search</button>
                     </form>
-                    <a class="link" href="login.html">
+
+                    <!------------------------- Login Icons ------------------------->
+                    <a class="link" href="signup.html">
                         <ion-icon name="person-circle-outline"></ion-icon>
                     </a>
                     <a class="link" href="">
@@ -65,54 +71,85 @@
     </header>
 
 
-<!------------------------- SingIn section ------------------------->
+<!------------------------- Add Items Form ------------------------->
 
-    <section class="row container-accTable">
-        <div class="container-log col-5">
-            <h2>Log In</h2>
-            <div class="login col-md-12">
-                <div class="username">
-                    <label for="inputPassword4" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="inputUsernamed4" placeholder="Username">
+    <section class="container ad col-12">
+        <h5>Place an Ad</h5>
+        <form class="row g-3">
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Title</label>
+                <input type="text" class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputCategory" class="form-label">Main category</label>
+                <select id="inputCategory" class="form-select">
+                    <option selected>Choose...</option>
+                    <option>Cars</option>
+                    <option>Mobiles</option>
+                    <option>Laptops</option>
+                    <option>TVs</option>
+                    <option>Others</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Description</label>
+                <textarea type="text" class="form-control"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Ads with photos sell 5X faster</label>
+                <input class="form-control" type="file" id="formFile">
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Ad Location</label>
+                <input type="text" class="form-control" id="inputEmail4">
+            </div>
+            <div class="col-12">
+                <label for="inputName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="inputName" placeholder="Seller Name">
+            </div>
+            <div class="col-12">
+                <label for="inputPhone" class="form-label">Cell Phone</label>
+                <input type="text" class="form-control" id="inputPhone" placeholder="Selle cell phone">
+            </div>
+            <div class="col-12">
+                <label for="inputEmail" class="form-label">E-mail</label>
+                <input type="mail" class="form-control" id="inputEmail" placeholder="Seller Email">
+            </div>
+            <div class='container contactWith row'>
+                <div class=col-2>
+                    <p>Contact with</p>
                 </div>
-                <div class="password">
-                    <label for="inputPassword4" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4" placeholder="password">
+                <div class="col-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                        <label class="form-check-label" for="inlineRadio1">Both</label>
+                      </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option2">
+                        <label class="form-check-label" for="inlineRadio1">Phone</label>
+                      </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option3">
+                        <label class="form-check-label" for="inlineRadio1">E-mail</label>
+                      </div>
                 </div>
             </div>
-            <button type="submit" id="signin" class="btn btn-primary">Sign in</button>
-        </div>
 
-<!------------------------- Create New Account ------------------------->
-
-        <div class="container-singUp col-5">
-            <h2>Create a new account</h2>
-            <div class="login col-md-12">
-                <div class="email">
-                    <label for="inputEmail4" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder=" Email">
-                </div>
-                <div class="username">
-                    <label for="inputPassword4" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="inputUsernamed4" placeholder="Username">
-                </div>
-                <div class="password">
-                    <label for="inputPassword4" class="form-label">Your Password</label>
-                    <input type="password" class="form-control" id="inputPassword4" placeholder="password">
-                </div>
-                <div class="phone">
-                    <label for="inputPassword4" class="form-label">Phone Number</label>
-                    <input type="number" class="form-control" id="inputPhone4" placeholder="Phone Number">
-                </div>
-                <button type="submit" id="signin" class="btn btn-primary">Register</button>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
-        </div>
+        </form>
     </section>
 
 
     <!------------------------- Footer ------------------------->
 
-    <footer class="container-footerLog col-12">
+    <footer class="container-footer col-12">
         <div class="container">
             <div class="row col-12">
                 <div class="col">
@@ -169,7 +206,8 @@
         </div>
     </footer>
 
-<!------------------------- Java Links  ------------------------->
+
+    <!------------------------- Java Links ------------------------->
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
         integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
@@ -183,6 +221,7 @@
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+    <script src="file.js"></script>
 </body>
 
 </html>
