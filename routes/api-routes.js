@@ -2,6 +2,9 @@ const db = require("../models");
 const passport = require("../config/passport");
 const router = require("express").Router();
 
+const dotenv = require("dotenv").config();
+
+
 require("dotenv").config();
 
 //API Key not is use yet possibly for Walmart API
