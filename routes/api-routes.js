@@ -1,7 +1,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const router = require("express").Router();
-require('dotenv').config();
+const dotenv = require("dotenv").config();
 
 const apiKey = process.env.API_KEY;
 console.log(apiKey);
