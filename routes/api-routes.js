@@ -5,6 +5,9 @@ const fs = require("fs");
 
 //might be able to put upload in here
 
+const dotenv = require("dotenv").config();
+
+
 require("dotenv").config();
 
 //API Key not is use yet possibly for Walmart API
