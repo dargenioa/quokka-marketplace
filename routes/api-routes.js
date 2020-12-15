@@ -6,7 +6,7 @@ require('dotenv').config();
 const apiKey = proceess.env.API_KEY;
 console.log(apiKey);
 
-router.get("/api/user", function(req, res) {
+router.get("/api/user_data", function(req, res) {
     if (!req.user) {
         res.json({});
     } else {
