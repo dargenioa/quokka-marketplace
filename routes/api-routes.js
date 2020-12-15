@@ -1,6 +1,9 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const router = require("express").Router();
+const fs = require("fs");
+
+//might be able to put upload in here
 
 const dotenv = require("dotenv").config();
 
@@ -13,11 +16,11 @@ console.log(apiKey);
 
 //GET user information to be used
 router.get("/api/user_data", function (req, res) {
- //If user not logged in return empty string
+  //If user not logged in return empty string
   if (!req.user) {
     res.json({});
   } else {
-   //Else send their information
+    //Else send their information
     res.json({
       email: req.user.email,
       id: req.user.id,
@@ -32,12 +35,12 @@ router.get("/api/listings", function (req, res) {
   });
 });
 
-//Post a listing to Listing table in db
-router.post("/api/listings", function (req, res) {
-  db.Listing.create(req.body).then(function (listing) {
-    res.json(listing);
-  });
-});
+// //Post a listing to Listing table in db
+// router.post("/api/listings", function (req, res) {
+//   db.Listing.create(req.body).then(function (listing) {
+//     res.json(listing);
+//   });
+// });
 
 //Posts User information through Sign Up form
 router.post("/api/signup", function (req, res) {
@@ -56,6 +59,42 @@ router.post("/api/signup", function (req, res) {
 //Checks if login information is valid returns user information
 router.post("/api/login", passport.authenticate("local"), function (req, res) {
   res.json(req.user);
+});
+
+const upload = require("../config/middleware/upload");
+
+//POST a listing to db
+router.post("/uploads", upload.single("file"), async (req, res) => {
+  try {
+    console.log(req.body.file);
+
+    //Check to see if a file was inserted
+    if (req.body == undefined) {
+      return res.send(`You must insert data.`);
+    }
+    //Create a listing
+    db.Listing.create({
+      name: req.body.name,
+      price: req.body.price,
+      quantity: req.body.quantity,
+      category: req.body.category,
+      purchased: req.body.purchased,
+      //Not sure what this does
+      photo: fs.readFileSync(
+        __basedir + "/public/assets/uploads/" + req.file.filename
+      ),
+    }).then((image) => {
+      fs.writeFileSync(
+        __basedir + "/public/assets/tmp/" + image.name,
+        image.photo
+      );
+
+      return res.send(`File has been uploaded.`);
+    });
+  } catch (error) {
+    console.log(error);
+    return res.send(`Error when trying upload images: ${error}`);
+  }
 });
 
 module.exports = router;

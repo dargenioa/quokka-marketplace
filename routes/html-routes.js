@@ -30,5 +30,10 @@ router.get("/home", authenticated, function (req, res) {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
+//Poop Route
+router.get("/add-listing", function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/addListing.html"));
+});
+
 //Export router
 module.exports = router;
