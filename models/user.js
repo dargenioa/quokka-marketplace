@@ -20,6 +20,13 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
+  User.associate = function(models) {
+    User.hasMany(models.Listing, {
+      onDelete: "cascade"
+    });
+  };
+
+
   User.prototype.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
   };
