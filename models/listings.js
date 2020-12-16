@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  let Listing = sequelize.define("Listing", {
+  const Listing = sequelize.define("Listing", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -30,7 +30,10 @@ module.exports = function (sequelize, DataTypes) {
     },
     url: {
         type: DataTypes.STRING,
-    }
+    },
+    // UserId: {
+    //   type: DataTypes.INTEGER,
+    // }
   });
 
   Listing.associate = function(models) {

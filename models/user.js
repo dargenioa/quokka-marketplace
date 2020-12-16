@@ -14,19 +14,11 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // username: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
   });
-
-  User.associate = function(models) {
-    User.hasMany(models.Listing, {
-      onDelete: "cascade"
-    });
-  };
-
-
   User.prototype.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
   };
@@ -38,6 +30,12 @@ module.exports = function (sequelize, DataTypes) {
       null
     );
   });
+
+  User.associate = function(models) {
+    User.hasMany(models.Listing, {
+      onDelete: "cascade"
+    });
+  };
 
   return User;
 };
