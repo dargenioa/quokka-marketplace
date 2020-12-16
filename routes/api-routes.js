@@ -40,10 +40,13 @@ router.get("/api/test/:item", function(req,res){
       price: firstItem.msrp,
       quantity: 10,
       category: "Electronics",
+      url: firstItem.largeImage
     }
     db.Listing.create(listingData).then(function(data){
       res.json(data);
     })
+    // console.log(response.data);
+    // res.json(response.data);
   })
   .catch(function (error) {
     // handle error

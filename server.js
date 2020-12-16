@@ -28,7 +28,7 @@ app.use(htmlRoutes);
 global.__basedir = __dirname;
 
 //Sequelize
-db.sequelize.sync({ force: true }).then(function () {
+db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {
     console.log(`App listening on PORT ${PORT}`);
   });
