@@ -48,13 +48,14 @@ router.get("/api/listings", function (req, res) {
 
 //Post a listing to Listing table in db
 router.post("/api/listings", function (req, res) {
-  db.Listing.create({
-    name: req.body.name,
-    price: req.body.price,
-    quantity: req.body.quantity,
-    category: req.body.category,
-    UserId: req.body.UserId
-  })
+  db.Listing.create( req.body
+//       {
+//     name: req.body.name,
+//     price: req.body.price,
+//     quantity: req.body.quantity,
+//     category: req.body.category,
+//   }
+  )
     .then(function (listing) {
       res.json(listing);
     })
@@ -62,14 +63,6 @@ router.post("/api/listings", function (req, res) {
       console.log(err);
     });
 });
-// {
-//   "name": "PS5",
-//   "price": 200.00,
-//   "quantity": 2,
-//   "category": "Electronics",
-//   "purchased": false
-
-//   }
 
 const upload = require("../config/middleware/upload");
 

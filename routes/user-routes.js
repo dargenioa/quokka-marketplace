@@ -3,11 +3,6 @@ const passport = require("../config/passport");
 const router = require("express").Router();
 const fs = require("fs");
 const dotenv = require("dotenv").config();
-const axios = require("axios");
-
-//API Key not is use yet possibly for Walmart API
-const apiKey = process.env.API_KEY;
-console.log(apiKey);
 
 //GET user information to be used
 router.get("/api/user_data", function (req, res) {
