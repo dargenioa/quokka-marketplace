@@ -29,7 +29,7 @@ router.get("/api/user_data", function (req, res) {
   }
 });
 
-router.get("/api/test/:item", function(req,res){
+router.get("/api/seed/:item", function(req,res){
   var queryURL = `https://api.walmartlabs.com/v1/search?apiKey=${process.env.API_KEY}&query=${req.params.item}`
   axios.get(queryURL)
   .then(function (response) {
@@ -55,7 +55,7 @@ router.get("/api/test/:item", function(req,res){
 })
 
 //Returns Listings table information
-router.get("/api/listings", function (req, res) {
+router.get("/api/listing", function (req, res) {
   db.Listing.findAll({}).then(function (listing) {
     res.json(listing);
   });
@@ -121,6 +121,47 @@ router.post("/uploads", upload.single("file"), async (req, res) => {
     console.log(error);
     return res.send(`Error when trying upload images: ${error}`);
   }
+});
+
+router.put("/api/listing", function(req, res) {
+  // Use the sequelize update method to update a listing to be equal to the value of req.body
+  // req.body will contain the id of the todo we need to update
+  db.Listing.update({
+    quantity: req.body.quantity,
+  },{
+    where: {
+      id: req.body.id
+    }
+  }).then(function(result){
+    res.json(result);
+  });
+});
+router.put("/api/user-listing", function(req, res) {
+  // Use the sequelize update method to update a listing to be equal to the value of req.body
+  // req.body will contain the id of the listing we need to update
+  db.Listing.update({
+    name: req.body.name,
+    price: req.body.price,
+    quantity: req.body.quantity,
+    purchased: req.body.purchased,
+    photo: req.body.photo
+  },{
+    where: {
+      id: req.body.id
+    }
+  }).then(function(result){
+    res.json(result);
+  });
+});
+
+router.delete("/api/listing/:id", function(req, res) {
+  db.Author.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(dbListings) {
+    res.json(dbListings);
+  });
 });
 
 module.exports = router;
