@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-  let Listing = sequelize.define("Listing", {
+  const Listing = sequelize.define("Listing", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -30,7 +30,23 @@ module.exports = function (sequelize, DataTypes) {
     },
     url: {
         type: DataTypes.STRING,
-    }
-  });
+    },
+  },
+  {
+    freezeTableName: true
+  }
+  );
+
+  Listing.associate = function(models) {
+    // We're saying that a listing should belong to a User
+    // A Post can't be created without a User due to the foreign key constraint
+    models.Listing.belongsTo(models.User, { 
+          onDelete: 'CASCADE',
+          foreignKey: { 
+            allowNull: false
+          }
+        })
+      };
+
   return Listing;
 };
