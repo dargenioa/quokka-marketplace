@@ -18,7 +18,11 @@ module.exports = function (sequelize, DataTypes) {
     //   type: DataTypes.STRING,
     //   allowNull: false,
     // },
-  });
+  },
+  {
+    freezeTableName: true
+  }
+  );
 
   User.prototype.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
@@ -32,7 +36,7 @@ module.exports = function (sequelize, DataTypes) {
     );
   });
 
-  User.associate = function(models) {
+  User.associate = function (models) {
     User.hasMany(models.Listing, {
       onDelete: "cascade"
     });

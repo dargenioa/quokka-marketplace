@@ -18,6 +18,17 @@ router.get("/api/user_data", function (req, res) {
   }
 });
 
+router.get("/api/user", function(req, res) {
+  // Here we add an "include" property to our options in our findAll query
+  // We set the value to an array of the models we want to include in a left outer join
+  // In this case, just db.Post
+  db.User.findAll({
+    include: [db.Listing]
+  }).then(function(dbUser) {
+    res.json(dbUser);
+  });
+});
+
 //Posts User information through Sign Up form
 router.post("/api/signup", function (req, res) {
   db.User.create({

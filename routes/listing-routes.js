@@ -33,18 +33,49 @@ router.get("/api/test/:item", function (req, res) {
       // handle error
       console.log(error);
     })
-})
+});
 
-//Returns Listings table information
-router.get("/api/listings", function (req, res) {
+router.get("/api/listings", function(req, res) {
+  let query = {};
+  if (req.query.user_id) {
+    query.UserId = req.query.user_id;
+  }
+  // Here we add an "include" property to our options in our findAll query
+  // We set the value to an array of the models we want to include in a left outer join
+  // In this case, just db.Author
   db.Listing.findAll({
-    include: {
-      models: db.User,
-    }
-  }).then(function (listing) {
-    res.json(listing);
+    where: query,
+    include: [db.User]
+  }).then(function(dbListing) {
+    res.json(dbListing);
   });
 });
+
+  // Get route for retrieving a single post
+ router.get("/api/listings/:id", function(req, res) {
+    // Here we add an "include" property to our options in our findOne query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Author
+    db.Listing.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.User]
+    }).then(function(dbListing) {
+      res.json(dbListing);
+    });
+  });
+
+// //Returns Listings table information
+// router.get("/api/listings", function (req, res) {
+//   db.Listing.findAll({
+//     include: {
+//       models: db.User,
+//     }
+//   }).then(function (listing) {
+//     res.json(listing);
+//   });
+// });
 
 //Post a listing to Listing table in db
 router.post("/api/listings", function (req, res) {
