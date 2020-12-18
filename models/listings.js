@@ -26,6 +26,7 @@ module.exports = function (sequelize, DataTypes) {
       defaultValue: false,
     },
     photo: {
+        //make this DataTypes.STRING  ?
       type: DataTypes.BLOB("long"),
     },
     url: {
@@ -42,8 +43,7 @@ module.exports = function (sequelize, DataTypes) {
     // A Post can't be created without a User due to the foreign key constraint
     Listing.belongsTo(models.User, { 
           onDelete: 'CASCADE',
-          sourceKey: 'UserId',
-          foreignKey: { 
+          validate: {
             allowNull: false
           }
         })
