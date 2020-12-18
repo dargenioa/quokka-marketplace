@@ -96,7 +96,9 @@ li {
   list-style: none;
   letter-spacing: 1px;
 }
-
+.inputRow {
+  margin-top: 10px;
+}
 /*/////////////////////////////////////////////////// SignIn Page /////////////////////////////////////////////*/
 
 .container-accTable {
