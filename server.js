@@ -1,6 +1,7 @@
 const express = require("express");
 const htmlRoutes = require("./routes/html-routes");
-const apiRoutes = require("./routes/api-routes");
+const userRoutes = require("./routes/user-routes");
+const listingRoute = require("./routes/listing-routes");
 const db = require("./models");
 const passport = require("./config/passport");
 const session = require("express-session");
@@ -32,7 +33,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Routes
-app.use(apiRoutes);
+app.use(userRoutes);
+app.use(listingRoute);
 app.use(htmlRoutes);
 
 //Multer
