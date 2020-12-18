@@ -15,10 +15,17 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: false,
     },
 
-    // username: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    phoneNumber: {
+      type: DataTypes.STRING,
+      validate: {
+        isInt: true,
+        len: [7, 10],
+      },
+    },
   });
 
   User.prototype.validPassword = function (password) {

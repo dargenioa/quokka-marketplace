@@ -36,6 +36,8 @@ router.post("/api/signup", function (req, res) {
   db.User.create({
     email: req.body.email,
     password: req.body.password,
+    username: req.body.username,
+    phoneNumber: req.body.phoneNumber,
   })
     .then(function () {
       res.redirect(307, "/api/login");
@@ -50,5 +52,7 @@ router.post("/api/login", passport.authenticate("local"), function (req, res) {
   console.log("my info ", req.user);
   res.json(req.user);
 });
+
+
 
 module.exports = router;

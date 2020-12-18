@@ -99,40 +99,4 @@ router.post("/api/listings", function (req, res) {
     });
 });
 
-const upload = require("../config/middleware/upload");
-
-//POST a listing to db
-router.post("/uploads", upload.single("file"), async (req, res) => {
-  try {
-    console.log(req.body.file);
-
-    //Check to see if a file was inserted
-    if (req.body == undefined) {
-      return res.send(`You must insert data.`);
-    }
-    //Create a listing
-    db.Listing.create({
-      name: req.body.name,
-      price: req.body.price,
-      quantity: req.body.quantity,
-      category: req.body.category,
-      purchased: req.body.purchased,
-      //Not sure what this does
-      photo: fs.readFileSync(
-        __basedir + "/public/assets/uploads/" + req.file.filename
-      ),
-    }).then((image) => {
-      fs.writeFileSync(
-        __basedir + "/public/assets/tmp/" + image.name,
-        image.photo
-      );
-
-      return res.send(`File has been uploaded.`);
-    });
-  } catch (error) {
-    console.log(error);
-    return res.send(`Error when trying upload images: ${error}`);
-  }
-});
-
 module.exports = router;
