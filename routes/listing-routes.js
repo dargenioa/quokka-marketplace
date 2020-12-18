@@ -85,7 +85,7 @@ router.get("/api/listings", function(req, res) {
 
 //Post a listing to Listing table in db
 router.post("/api/listings", function (req, res) {
-  const id = 1
+  // const id = 1
   db.Listing.create(
       {
     name: req.body.name,
