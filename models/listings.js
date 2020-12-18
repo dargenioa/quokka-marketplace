@@ -7,6 +7,9 @@ module.exports = function (sequelize, DataTypes) {
         len: [1, 255],
       },
     },
+    description: {
+      type: DataTypes.STRING,
+    },
     price: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
@@ -25,25 +28,21 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-    photo: {
-        //make this DataTypes.STRING  ?
-      type: DataTypes.BLOB("long"),
-    },
+
     url: {
-        type: DataTypes.STRING,
+      type: DataTypes.STRING,
     },
   });
 
-  Listing.associate = function(models) {
+  Listing.associate = function (models) {
     // We're saying that a listing should belong to a User
     // A Post can't be created without a User due to the foreign key constraint
-    models.Listing.belongsTo(models.User, { 
-          onDelete: 'CASCADE',
-          foreignKey: { 
-            allowNull: false
-          }
-        })
-      };
+    Listing.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
 
   return Listing;
 };
