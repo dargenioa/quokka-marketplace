@@ -16,8 +16,13 @@ app.use(express.static("public"));
 
 //Passport
 app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+  session({
+    secret: "keyboard cat",
+    resave: true,
+    saveUninitialized: true,
+  })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -26,11 +31,8 @@ app.use(userRoutes);
 app.use(listingRoute);
 app.use(htmlRoutes);
 
-//Multer
-global.__basedir = __dirname;
-
 //Sequelize
-db.sequelize.sync({ force: false }).then(function () {
+db.sequelize.sync({ force: true }).then(function () {
   app.listen(PORT, function () {
     console.log(`App listening on PORT ${PORT}`);
   });

@@ -13,10 +13,11 @@ router.get("/", function (req, res) {
 //Upon login
 router.get("/login", function (req, res) {
   if (req.user) {
-    res.redirect("/members");
+    res.redirect("/home");
   }
   res.sendFile(path.join(__dirname, "../public/login.html"));
 });
+
 //Send User to signup.html
 router.get("/signup", function (req, res) {
   if (req.user) {
@@ -35,7 +36,7 @@ router.get("/add-listing", function (req, res) {
   res.sendFile(path.join(__dirname, "../public/addListing.html"));
 });
 
-router.get("/members", authenticated, function(req, res) {
+router.get("/members", authenticated, function (req, res) {
   res.sendFile(path.join(__dirname, "../public/members.html"));
 });
 
