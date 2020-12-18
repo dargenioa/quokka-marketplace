@@ -13,21 +13,12 @@ module.exports = function (sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-
-    UserId: {
-      type: DataTypes.INTEGER,
-      allowNull: true
     }
     // username: {
     //   type: DataTypes.STRING,
     //   allowNull: false,
     // },
-  },
-  {
-    freezeTableName: true
-  }
-  );
+  });
 
   User.prototype.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
@@ -42,7 +33,7 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   User.associate = function (models) {
-    User.hasMany(models.Listing, {
+    models.User.hasMany(models.Listing, {
       onDelete: "cascade"
     });
   };
