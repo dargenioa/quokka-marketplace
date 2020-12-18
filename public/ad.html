@@ -109,13 +109,20 @@
 
     <section class="container ad col-12">
       <h5>Place an Ad</h5>
-      <form class="row g-3">
+      <form
+        class="row g-3"
+        action="/api/listings"
+        enctype="multipart/form-data"
+        method="post"
+      >
         <div class="col-md-6">
-          <label for="email-input" class="form-label">Name of Item</label>
-          <input type="text" class="form-control" id="email-input" />
+          <!-- Name Input -->
+          <label for="name" class="form-label">Name of Item</label>
+          <input type="text" name="name" class="form-control" id="email-input" />
         </div>
         <div class="col-md-6">
-          <label for="inputCategory" class="form-label">Main category</label>
+          <!-- Category -->
+          <!-- <label for="inputCategory" class="form-label">Main category</label>
           <select id="inputCategory" class="form-select">
             <option selected>Choose...</option>
             <option>Vehicles</option>
@@ -124,21 +131,40 @@
             <option>TVs</option>
             <option>Others</option>
           </select>
-        </div>
+        </div> -->
+
         <div class="col-md-6">
-          <label for="input-price" class="form-label">Price</label>
-          <input id="input-price" class="form-control" />
+          <!-- Category -->
+          <label for="price" class="form-label">Price</label>
+          <input
+            type="text"
+            name="price"
+            id="input-price"
+            class="form-control"
+          />
         </div>
 
         <div class="mb-3">
-          <label for="formFile" class="form-label">Photo</label>
-          <input class="form-control" type="file" id="formFile" />
+          <!-- File Upload -->
+          <label for="upload" class="form-label">Photo</label>
+          <input
+            class="form-control"
+            type="file"
+            id="formFile"
+            name="upload"
+          />
         </div>
         <div class="col-md-6">
-          <label for="input-quantity" class="form-label">Quantity</label>
-          <input type="text" class="form-control" id="input-quantity" />
+          <!-- Quantity -->
+          <label for="quantity" class="form-label">Quantity</label>
+          <input
+            type="text"
+            class="form-control"
+            name="quantity"
+            id="input-quantity"
+          />
         </div>
-        <div class="col-12">
+        <!-- <div class="col-12">
           <label for="inputName" class="form-label">Name</label>
           <input
             type="text"
@@ -146,17 +172,17 @@
             id="inputName"
             placeholder="Seller Name"
           />
-        </div>
-        <div class="col-12">
+        </div> -->
+        <!-- <div class="col-12">
           <label for="inputPhone" class="form-label">Cell Phone</label>
           <input
             type="text"
             class="form-control"
             id="inputPhone"
-            placeholder="Selle cell phone"
+            placeholder="Seller cell phone"
           />
-        </div>
-        <div class="col-12">
+        </div> -->
+        <!-- <div class="col-12">
           <label for="inputEmail" class="form-label">E-mail</label>
           <input
             type="mail"
@@ -164,7 +190,7 @@
             id="inputEmail"
             placeholder="Seller Email"
           />
-        </div>
+        </div> -->
         <div class="container contactWith row">
           <div class="col-2">
             <p>Contact with</p>

@@ -31,9 +31,6 @@ app.use(userRoutes);
 app.use(listingRoute);
 app.use(htmlRoutes);
 
-//Multer
-global.__basedir = __dirname;
-
 //Sequelize
 db.sequelize.sync({ force: true }).then(function () {
   app.listen(PORT, function () {

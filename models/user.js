@@ -23,7 +23,6 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
-        isInt: true,
         len: [0, 10],
       },
     },
