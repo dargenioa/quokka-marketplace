@@ -43,7 +43,7 @@ module.exports = function (sequelize, DataTypes) {
     // A Post can't be created without a User due to the foreign key constraint
     models.Listing.belongsTo(models.User, { 
           onDelete: 'CASCADE',
-          foreignKey: { 
+          validate: {
             allowNull: false
           }
         })
