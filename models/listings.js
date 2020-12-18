@@ -31,8 +31,13 @@ module.exports = function (sequelize, DataTypes) {
 
     url: {
       type: DataTypes.STRING,
-    },
-  });
+    }
+  },
+  {
+    freezeTableName: true
+
+  }
+  );
 
   Listing.associate = function (models) {
     // We're saying that a listing should belong to a User
