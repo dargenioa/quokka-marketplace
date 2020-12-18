@@ -35,17 +35,16 @@ router.get("/api/test/:item", function (req, res) {
     });
 });
 
-router.get("/api/listings", function(req, res) {
-  
+router.get("/api/listings", function (req, res) {
   let query = {};
   if (req.query.user_id) {
     query.UserId = req.query.user_id;
   }
-    // if(req.User){
-    //   q
-    // }
-  console.log(req.query)
-  console.log(query)
+  // if(req.User){
+  //   q
+  // }
+  console.log(req.query);
+  console.log(query);
   // Here we add an "include" property to our options in our findAll query
   // We set the value to an array of the models we want to include in a left outer join
   // In this case, just db.Author
@@ -85,16 +84,13 @@ router.get("/api/listings/:id", function (req, res) {
 
 //Post a listing to Listing table in db
 router.post("/api/listings", function (req, res) {
-  // const id = 1
-  db.Listing.create(
-      {
+  db.Listing.create({
     name: req.body.name,
     price: req.body.price,
     quantity: req.body.quantity,
     category: req.body.category,
-    UserId: req.user.id
-  }
-  )
+    UserId: req.user.id,
+  })
     .then(function (listing) {
       res.json(listing);
     })

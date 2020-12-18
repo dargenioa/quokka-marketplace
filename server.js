@@ -20,12 +20,6 @@ app.use(
     secret: "keyboard cat",
     resave: true,
     saveUninitialized: true,
-    cookie: {
-      secure: true,
-      httpOnly: true,
-      sameSite: "none",
-      maxAge: 60 * 60 * 24 * 1000,
-    },
   })
 );
 

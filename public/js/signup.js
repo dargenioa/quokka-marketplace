@@ -1,16 +1,17 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Getting references to our form and input
-  var signUpForm = $("form.signup");
-  var emailInput = $("input#email-input");
-  var passwordInput = $("input#password-input");
+  let signUpBtn = $("#signup-btn");
+  let emailInput = $("#email-input");
+  let passwordInput = $("#password-input");
 
   // When the signup button is clicked, we validate the email and password are not blank
-  signUpForm.on("submit", function(event) {
+  signUpBtn.on("click", function (event) {
     event.preventDefault();
-    var userData = {
-      email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
+    let userData = {
+      email: emailInput.val(),
+      password: passwordInput.val(),
     };
+    console.log(userData);
 
     if (!userData.email || !userData.password) {
       return;
@@ -26,9 +27,9 @@ $(document).ready(function() {
   function signUpUser(email, password) {
     $.post("/api/signup", {
       email: email,
-      password: password
+      password: password,
     })
-      .then(function(data) {
+      .then(function (data) {
         window.location.replace("/members");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
