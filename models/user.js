@@ -1,27 +1,25 @@
 const bcrypt = require("bcryptjs");
 
 module.exports = function (sequelize, DataTypes) {
-  const User = sequelize.define("User", {
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
+  const User = sequelize.define(
+    "User",
+    {
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          isEmail: true,
+        },
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // username: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
-  },
-  {
-    freezeTableName: true
-  }
+    {
+      freezeTableName: true,
+    }
   );
 
   User.prototype.validPassword = function (password) {
@@ -38,7 +36,7 @@ module.exports = function (sequelize, DataTypes) {
 
   User.associate = function (models) {
     User.hasMany(models.Listing, {
-      onDelete: "cascade"
+      onDelete: "cascade",
     });
   };
 
