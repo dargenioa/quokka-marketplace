@@ -31,7 +31,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     url: {
         type: DataTypes.STRING,
-    },
+    }
   },
   {
     freezeTableName: true
@@ -42,7 +42,7 @@ module.exports = function (sequelize, DataTypes) {
     // We're saying that a listing should belong to a User
     // A Post can't be created without a User due to the foreign key constraint
     Listing.belongsTo(models.User, { 
-          foreignKey: {
+          foreignKey: { 
             allowNull: false
           }
         })
