@@ -45,6 +45,7 @@ router.post("/api/signup", function (req, res) {
 
 //Checks if login information is valid returns user information
 router.post("/api/login", passport.authenticate("local"), function (req, res) {
+  console.log("my info ", req.user);
   res.json(req.user);
 });
 
