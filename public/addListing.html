@@ -22,33 +22,37 @@
         enctype="multipart/form-data"
       >
         <!-- Input Fields -->
-        <ul>
-          <label for="name">Name</label>
-
-          <input type="text" name="name" />
-
-          <label for="price">Price</label>
-
-          <input type="text" name="price" />
-
-          <label for="quantity">Quantitiy</label>
-
-          <input type="text" name="quantity" />
-
-          <label for="Category">Category</label>
-
-          <input type="text" name="category" />
+        
 
           <!-- File Input -->
           <label for="file">Image</label>
 
-          <input type="file" name="file" />
-        </ul>
+          <input id="fileinput" type="file" name="file" />
+        
         <button type="submit">Submit</button>
       </form>
-      <div class="preview-images"></div>
+     </br>
+      <button id="upload_widget" class="cloudinary-button">Upload files</button>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>  
+
+<script type="text/javascript">  
+var myWidget = cloudinary.createUploadWidget({
+  cloudName: 'chriscloud1738', 
+  uploadPreset: 'QuakkaMPpics'}, (error, result) => { 
+    if (!error && result && result.event === "success") { 
+      console.log('Done! Here is the image info: ', result.info); 
+    }
+  }
+)
+
+document.getElementById("upload_widget").addEventListener("click", function(){
+    myWidget.open();
+  }, false);
+</script>
     <script type="text/javascript" src="js/addListings.js"></script>
   </body>
 </html>

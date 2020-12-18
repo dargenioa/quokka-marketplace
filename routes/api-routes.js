@@ -7,7 +7,6 @@ const fs = require("fs");
 
 const dotenv = require("dotenv").config();
 
-
 require("dotenv").config();
 
 //API Key not is use yet possibly for Walmart API
@@ -62,9 +61,10 @@ router.post("/api/login", passport.authenticate("local"), function (req, res) {
 });
 
 const upload = require("../config/middleware/upload");
+let cloudinary = require("cloudinary-core");
 
 //POST a listing to db
-router.post("/uploads", upload.single("file"), async (req, res) => {
+router.post("/uploads", async (req, res) => {
   try {
     console.log(req.body.file);
 
@@ -72,6 +72,14 @@ router.post("/uploads", upload.single("file"), async (req, res) => {
     if (req.body == undefined) {
       return res.send(`You must insert data.`);
     }
+
+    cloudinary.v2.uploader.unsigned_upload(
+      req.file,
+      "Quakka",
+      options,
+      callback
+    );
+
     //Create a listing
     db.Listing.create({
       name: req.body.name,

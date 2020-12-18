@@ -17,6 +17,7 @@ router.get("/login", function (req, res) {
   }
   res.sendFile(path.join(__dirname, "../public/login.html"));
 });
+
 //Send User to signup.html
 router.get("/signup", function (req, res) {
   if (req.user) {

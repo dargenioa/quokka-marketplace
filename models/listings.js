@@ -26,7 +26,7 @@ module.exports = function (sequelize, DataTypes) {
       defaultValue: false,
     },
     photo: {
-      type: DataTypes.BLOB("long"),
+      type: DataTypes.STRING,
       allowNull: false,
     },
   });
