@@ -16,6 +16,11 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
       },
+
+      // username: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      // },
     },
     {
       freezeTableName: true,
@@ -35,7 +40,7 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   User.associate = function (models) {
-    User.hasMany(models.Listing, {
+    models.User.hasMany(models.Listing, {
       onDelete: "cascade",
     });
   };
