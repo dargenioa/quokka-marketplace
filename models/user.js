@@ -14,9 +14,17 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    phoneNumber: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [0, 10],
+      },
     },
   });
 
@@ -31,6 +39,12 @@ module.exports = function (sequelize, DataTypes) {
       null
     );
   });
+
+  User.associate = function (models) {
+    User.hasMany(models.Listing, {
+      onDelete: "cascade",
+    });
+  };
 
   return User;
 };

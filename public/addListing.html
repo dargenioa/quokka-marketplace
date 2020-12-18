@@ -12,40 +12,41 @@
     />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
+
   <body>
     <div class="container">
       <h1>Create a Listing</h1>
-      <form
-        id="inputForm"
-        action="/uploads"
-        method="POST"
-        enctype="multipart/form-data"
-      >
-        <!-- Input Fields -->
-        <ul>
+
+      <!-- Input Fields -->
+      <ul>
+        <li>
           <label for="name">Name</label>
 
           <input type="text" name="name" />
-
+        </li>
+        <li>
           <label for="price">Price</label>
 
           <input type="text" name="price" />
-
+        </li>
+        <li>
           <label for="quantity">Quantitiy</label>
 
           <input type="text" name="quantity" />
-
+        </li>
+        <li>
           <label for="Category">Category</label>
 
           <input type="text" name="category" />
+        </li>
 
-          <!-- File Input -->
-          <label for="file">Image</label>
+        <!-- File Input -->
+        <label for="file">Image</label>
 
-          <input type="file" name="file" />
-        </ul>
-        <button type="submit">Submit</button>
-      </form>
+        <input type="file" name="file" />
+      </ul>
+      <button>Submit</button>
+
       <div class="preview-images"></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
