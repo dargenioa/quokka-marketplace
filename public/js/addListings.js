@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $("button").on("click", function (event) {
+  $("#submit").on("click", function (event) {
     event.preventDefault();
     let formData = {
       name: $("input[name=name]").val().trim(),
@@ -10,7 +10,7 @@ $(document).ready(function () {
     };
 
     let userid = localStorage.getItem('userid')
-    $.post(`/api/listings/${userid}`, formData).then(function (data) {
+    $.post(`/api/listings/new`, formData).then(function (data) {
       console.log(`Your data ${data} was Posted`);
     });
   });

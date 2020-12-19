@@ -89,7 +89,7 @@ router.post("/api/listings/new", function (req, res) {
     price: req.body.price,
     quantity: req.body.quantity,
     category: req.body.category,
-    UserId: req.body.UserId
+    UserId: req.user.id || req.body.UserId
   })
     .then(function (listing) {
       res.json(listing);
