@@ -27,8 +27,10 @@ module.exports = function (sequelize, DataTypes) {
     },
     photo: {
       type: DataTypes.BLOB("long"),
-      allowNull: false,
     },
+    url: {
+        type: DataTypes.STRING,
+    }
   });
   return Listing;
 };
