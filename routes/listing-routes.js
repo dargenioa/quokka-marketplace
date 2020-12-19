@@ -141,7 +141,7 @@ router.post("/api/listings", (req, res) => {
           name: fields.name,
           price: fields.price,
           quantity: fields.quantity,
-          category: "filler",
+          category: fields.category,
           UserId: req.user.id,
           url: pictureURL,
         })
