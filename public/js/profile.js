@@ -12,6 +12,5 @@ $(document).ready(function () {
     phoneNumber.val(data.phoneNumber);
     memberUsername.text(data.username);
   });
-
   
 });
