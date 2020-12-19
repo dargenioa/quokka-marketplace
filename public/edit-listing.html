@@ -108,7 +108,7 @@
     <!------------------------- Add Items Form ------------------------->
 
     <section class="container ad col-12">
-      <h5>Place an Ad</h5>
+      <h5>Edit listing</h5>
       <form
         class="row g-3"
         action="/api/listings"
@@ -118,12 +118,12 @@
         <div class="col-md-6">
           <!-- Name Input -->
           <label for="name" class="form-label">Name of Item</label>
-          <input type="text" name="name" class="form-control" id="email-input" />
+          <input type="text" name="name" class="form-control" id="input-item" />
         </div>
         <div class="col-md-6">
           <!-- Category -->
-          <label for="inputCategory" class="form-label">Main category</label>
-          <select id="inputCategory" class="form-select" name="category">
+          <!-- <label for="inputCategory" class="form-label">Main category</label>
+          <select id="inputCategory" class="form-select">
             <option selected>Choose...</option>
             <option>Vehicles</option>
             <option>Mobiles</option>
@@ -131,7 +131,7 @@
             <option>TVs</option>
             <option>Others</option>
           </select>
-        </div> 
+        </div> -->
 
         <div class="col-md-6">
           <!-- Category -->
@@ -164,33 +164,7 @@
             id="input-quantity"
           />
         </div>
-        <!-- <div class="col-12">
-          <label for="inputName" class="form-label">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputName"
-            placeholder="Seller Name"
-          />
-        </div> -->
-        <!-- <div class="col-12">
-          <label for="inputPhone" class="form-label">Cell Phone</label>
-          <input
-            type="text"
-            class="form-control"
-            id="inputPhone"
-            placeholder="Seller cell phone"
-          />
-        </div> -->
-        <!-- <div class="col-12">
-          <label for="inputEmail" class="form-label">E-mail</label>
-          <input
-            type="mail"
-            class="form-control"
-            id="inputEmail"
-            placeholder="Seller Email"
-          />
-        </div> -->
+
         <div class="container contactWith row">
           <div class="col-2">
             <p>Contact with</p>
@@ -234,7 +208,7 @@
         </div>
 
         <div class="col-12">
-          <button type="submit" class="submit-listing btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
     </section>
@@ -320,6 +294,6 @@
       integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
       crossorigin="anonymous"
     ></script>
-    <script src="file.js"></script>
+    <script src="js/edit-listing.js"></script>
   </body>
 </html>
