@@ -276,7 +276,6 @@ h3 {
   width: 247px;
   font-size: 30px;
   position: absolute;
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -288,6 +287,7 @@ h3 {
   border-radius: 8px;
   box-shadow: 0 0 20px #000000b3;
   font-family: "montserrat", sans-serif;
+  position: relative;
 }
 
 .profileInput {
@@ -297,7 +297,7 @@ h3 {
   font-size: 17px;
 }
 #profileSaveBtn {
-  margin-top: 10px;
+  margin-top: 20px;
   width: 80px;
 }
 
@@ -309,4 +309,31 @@ h3 {
 #profileIntro {
   text-align: center;
   margin-bottom: 30px;
+}
+
+#logoutLink {
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  text-decoration: none;
+}
+#accountLink,
+#newacc {
+  text-decoration: none;
+}
+#quokkaHome {
+  font-family: "Libre Baskerville", serif;
+  font-size: 25px;
+  color: #000;
+  position: absolute;
+  top: 52%;
+  transform: translate(0, -50%);
+  margin-left: -4px;
+  text-decoration: none;
+}
+
+#profileNav {
+  position: relative;
 }

@@ -5,6 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"
     />
@@ -12,16 +16,16 @@
   </head>
 
   <body>
-    <!-- Nav -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/logout"> Logout </a>
+    <header>
+      <!-- Nav -->
+      <nav id="profileNav" class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <!-- Brand Name -->
+          <a id="quokkaHome" href="home">Quokka Marketplace</a>
         </div>
-      </div>
-    </nav>
-    <!-- Nave End -->
-
+      </nav>
+      <!-- Nav End -->
+    </header>
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -33,7 +37,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 col-md-4">
+        <div class="col-sm-12 col-md-6 col-lg-5">
           <div id="profileInfo">
             <ul id="profileUl">
               <label class="profileLabel" for="username">Username</label>
@@ -42,12 +46,7 @@
               </li>
               <label class="profileLabel" for="email">Email</label>
               <li>
-                <input
-                  class="profileInput"
-                  name="email"
-                  type="text"
-                  value="chris.lamb13@hotmail.com"
-                />
+                <input class="profileInput" name="email" type="text" />
               </li>
               <label class="profileLabel" for="password">Password</label>
               <li>
@@ -57,12 +56,14 @@
               <li>
                 <input class="profileInput" name="phoneNumber" type="text" />
               </li>
+
               <button id="profileSaveBtn">Save</button>
+              <a id="logoutLink" href="/logout">Logout</a>
             </ul>
           </div>
         </div>
 
-        <div class="col-sm-12 col-md-8">
+        <div class="col-sm-12 col-md-6 col-lg-7">
           <div class="row">
             <div id="addListing">
               <button>Sell New Item</button>
