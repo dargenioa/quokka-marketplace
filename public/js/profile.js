@@ -43,8 +43,9 @@ $(document).ready(function () {
             <th scope="row">${rowIndex}</th>
             <td>${data.Listings[i].name}</td>
             <td><img class='listingThumbnail' src = '${data.Listings[i].url}'/></td>
-            <td>${data.Listings[i].price}</td>
+            <td>$${data.Listings[i].price}</td>
             <td>${data.Listings[i].quantity}</td>
+            <td>${data.Listings[i].createdAt}
             <td><button class = "edit-listing">Edit</button></td>
         </tr>`
 
