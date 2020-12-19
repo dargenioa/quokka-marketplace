@@ -5,9 +5,7 @@ $(document).ready(function () {
     $(".member-name").text(data.email);
   });
 
-  // const {response} = require("express");
-  // let switchVar = false;
-
+  //When we're ready, take away the on click function and just perform the request when loading the page:
   $("#addListing").on("click", function () {
     $.ajax("/api/listings", {
       type: "GET"
