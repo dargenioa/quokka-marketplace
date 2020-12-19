@@ -25,8 +25,13 @@ module.exports = function (sequelize, DataTypes) {
       validate: {
         len: [0, 10],
       },
-    },
-  });
+    }
+  },
+  {
+    freezeTableName: true
+  }
+
+  );
 
   User.prototype.validPassword = function (password) {
     return bcrypt.compareSync(password, this.password);
