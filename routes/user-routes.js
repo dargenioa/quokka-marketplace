@@ -70,6 +70,29 @@ router.post("/api/login", passport.authenticate("local"), function (req, res) {
   res.json(req.user);
 });
 
+router.put("/api/user/:id", function(req,res){
+  db.Listing.update(
+    req.body,
+    {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbListing) {
+      console.log(dbListing);
+    res.json(dbListing);
+  });
+});
+
+router.delete("/api/user/:id", function(req,res){
+  db.Listing.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(dbListing) {
+    res.json(dbListing);
+  });
+});
+
 //Logout route
 router.get("/logout", function (req, res) {
   req.logout();

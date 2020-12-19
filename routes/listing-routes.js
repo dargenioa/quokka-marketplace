@@ -62,7 +62,7 @@ router.get("/api/listings", function (req, res) {
 router.get("/api/listings/:id", function (req, res) {
   // Here we add an "include" property to our options in our findOne query
   // We set the value to an array of the models we want to include in a left outer join
-  // In this case, just db.Author
+  // In this case, just db.User
   db.Listing.findOne({
     where: {
       id: req.params.id,
@@ -141,7 +141,7 @@ router.post("/api/listings", (req, res) => {
           name: fields.name,
           price: fields.price,
           quantity: fields.quantity,
-          category: "filler",
+          category: fields.category,
           UserId: req.user.id,
           url: pictureURL,
         })
@@ -155,4 +155,27 @@ router.post("/api/listings", (req, res) => {
   });
 });
 
+
+router.put("/api/listings/:id", function(req,res){
+  db.Listing.update(
+    req.body,
+    {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbListing) {
+      console.log(dbListing);
+    res.json(dbListing);
+  });
+});
+
+router.delete("/api/listings/:id", function(req,res){
+  db.Listing.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(dbListing) {
+    res.json(dbListing);
+  });
+});
 module.exports = router;

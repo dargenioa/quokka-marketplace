@@ -28,7 +28,7 @@ $(document).ready(function () {
       //               </tr>
       //           </thead>
       //           <tbody id = "tableBody">
-    
+
       //           </tbody>
       //       </table>`;
 
@@ -48,7 +48,7 @@ $(document).ready(function () {
             <td>${data.Listings[i].quantity}</td>
             <td>${date}</td>
             <td><button type ="button" class = "edit-listing btn btn-warning" data-id="${data.Listings[i].id}">Edit</button></td>
-            <td><button type="button" class="btn btn-danger" data-id="${data.Listings[i].id}">Delete</button></td>
+            <td><button type="button" class="delete-listing btn btn-danger" data-id="${data.Listings[i].id}">Delete</button></td>
         </tr>`
 
       $("#tableBody").append(userListing);
@@ -66,15 +66,28 @@ $(document).ready(function () {
 
   });
 
+  $(document).on("click", ".delete-listing", function () {
+    let id = $(this).data("id");
+    console.log(id);
 
-  // //ignore for meow
-  // $("#submit-edit").on("click", function() {
-  //   $.ajax({
-  //     method: "PUT",
-  //     url: "/api/listings"
-  //   }).then(function() {
-  //     window.location.href = "/profile"
-  //   });
-  // });
-  
+    $.ajax({
+      method: "DELETE",
+      url: "/api/listings/" + id
+    })
+      .then(function () {
+        // console.log("deleted");
+        window.location.href = "/profile"
+      })
+
+  });
+
+  $("#submit-edit").on("click", function () {
+    $.ajax({
+      method: "PUT",
+      url: "/api/listings"
+    }).then(function () {
+      window.location.href = "/profile"
+    });
+  });
+
 });
