@@ -48,12 +48,12 @@ router.get("/api/listings", function (req, res) {
   // Here we add an "include" property to our options in our findAll query
   // We set the value to an array of the models we want to include in a left outer join
   // In this case, just db.Listing
-  // db.Listing.findAll({
-  //   where: query,
-  //   include: [db.User]
-  // }).then(function(dbListing) {
-  //   res.json(dbListing);
-  // });
+  db.Listing.findAll({
+    where: query,
+    include: [db.User]
+  }).then(function(dbListing) {
+    res.json(dbListing);
+  });
 });
 
 // Get route for retrieving a single post
@@ -72,32 +72,33 @@ router.get("/api/listings/:id", function (req, res) {
 });
 
 // //Returns Listings table information
-// router.get("/api/listings", function (req, res) {
-//   db.Listing.findAll({
-//     include: {
-//       models: db.User,
-//     }
-//   }).then(function (listing) {
-//     res.json(listing);
-//   });
-// });
+router.get("/api/listings", function (req, res) {
+  db.Listing.findAll({
+    include: {
+      models: db.User,
+    }
+  }).then(function (listing) {
+    res.json(listing);
+  });
+});
 
 //Post a listing to Listing table in db
-// router.post("/api/listings", function (req, res) {
-//   db.Listing.create({
-//     name: req.body.name,
-//     price: req.body.price,
-//     quantity: req.body.quantity,
-//     category: req.body.category,
-//     UserId: req.user.id,
-//   })
-//     .then(function (listing) {
-//       res.json(listing);
-//     })
-//     .catch(function (err) {
-//       console.log(err);
-//     });
-// });
+router.post("/api/listings/new", function (req, res) {
+  db.Listing.create({
+    name: req.body.name,
+    price: req.body.price,
+    quantity: req.body.quantity,
+    category: req.body.category,
+    UserId: req.body.UserId
+  })
+    .then(function (listing) {
+      res.json(listing);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+  //console.log(req.user);
+});
 
 
 //NEW Listing Post to /api/listings includes

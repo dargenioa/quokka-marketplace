@@ -8,7 +8,9 @@ $(document).ready(function () {
       category: $("input[name=category]").val().trim(),
       
     };
-    $.post("/api/listings", formData).then(function (data) {
+
+    let userid = localStorage.getItem('userid')
+    $.post(`/api/listings/${userid}`, formData).then(function (data) {
       console.log(`Your data ${data} was Posted`);
     });
   });
