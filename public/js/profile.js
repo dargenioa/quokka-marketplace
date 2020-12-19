@@ -36,8 +36,9 @@ $(document).ready(function () {
     };
 
     for (i = 0; i < data.Listings.length; i++) {
-      var rowIndex = i + 1;
-      var userListing =
+      let rowIndex = i + 1;
+      let date = new Date(data.Listings[i].createdAt).toDateString();
+      let userListing =
 
         `<tr>
             <th scope="row">${rowIndex}</th>
@@ -45,7 +46,7 @@ $(document).ready(function () {
             <td><img class='listingThumbnail' src = '${data.Listings[i].url}'/></td>
             <td>$${data.Listings[i].price}</td>
             <td>${data.Listings[i].quantity}</td>
-            <td>${data.Listings[i].createdAt}
+            <td>${date}
             <td><button class = "edit-listing">Edit</button></td>
         </tr>`
 
