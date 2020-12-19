@@ -3,8 +3,8 @@ $.ajax("/api/all-listings", {
 }).then(function (data) {
     //   res.json(data);
     for (i = 0; i < data.length; i++) {
-        var rowIndex = i + 1;
-        var userListing =
+        let rowIndex = i + 1;
+        let userListing =
 
             `<tr>
                   <th scope="row">${rowIndex}</th>
