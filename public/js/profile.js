@@ -46,13 +46,30 @@ $(document).ready(function () {
             <td><img class='listingThumbnail' src = '${data.Listings[i].url}'/></td>
             <td>$${data.Listings[i].price}</td>
             <td>${data.Listings[i].quantity}</td>
-            <td>${date}
-            <td><button class = "edit-listing">Edit</button></td>
+            <td>${date}</td>
+            <td><button class = "edit-listing btn btn-warning">Edit</button></td>
+            <td><button type="button" class="btn btn-danger">Delete</button></td>
         </tr>`
 
       $("#tableBody").append(userListing);
     };
   });
-  
+
+  $(".edit-listing").on("click", function() {
+    $.get("/edit-listings").then(function() {
+      
+    });
+  });
+
+
+  //ignore for meow
+  $("#submit-edit").on("click", function() {
+    $.ajax({
+      method: "PUT",
+      url: "/api/listings"
+    }).then(function() {
+      window.location.href = "/profile"
+    });
+  });
   
 });

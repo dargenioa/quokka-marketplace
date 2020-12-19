@@ -1,43 +1,30 @@
-// $.ajax("/api/all-listings", {
-//     type: "GET"
-// }).then(function (data) {
-//     //   res.json(data);
-//     for (i = 0; i < data.length; i++) {
-//         var rowIndex = i + 1;
-//         var userListing =
+$(document).ready(function () {
+    $.ajax("/api/all-users", {
+        type: "GET"
+    }).then(function (data) {
+        console.log("all users", data);
+        for (let i = 0; i < data.length; i++) {
+            let currentUser = data[i];
 
-//             `<tr>
-//                   <th scope="row">${rowIndex}</th>
-//                   <td>${data[i].name}</td>
-//                   <td>${data[i].price}</td>
-//                   <td>${data[i].quantity}</td>
-//                   <td><button class = "edit-listing">Edit</button></td>
-//               </tr>`
+            for (let j = 0; j < currentUser.Listings.length; j++) {
+                let rowIndex = j + 1;
+                let date = new Date(currentUser.Listings[j].createdAt).toDateString();
+                let listing =
 
-//         $("#tableBody").append(userListing);
-//     };
-// });
+                `<tr>
+                    <th scope="row">${rowIndex}</th>
+                    <td>${currentUser.Listings[j].name}</td>
+                    <td><img class='listingThumbnail' src = '${currentUser.Listings[j].url}'/></td>
+                    <td>$${currentUser.Listings[j].price}</td>
+                    <td>${currentUser.Listings[j].quantity}</td>
+                    <td>${date}</td>
+                    <td>${currentUser.username}</td>
+                    <td><button type="button" class="btn btn-success">Purchase</button></td>
+                </tr>`
 
-$.ajax("/api/all-users", {
-    type: "GET"
-}).then(function (data) {
-    console.log("all users", data);
-    for (i = 0; i < data.length; i++) {
-        for (i = 0; data.Listings.length; i++) {
-            var userListing =
-
-            `<tr>
-                <th scope="row">${rowIndex}</th>
-                <td>${data.Listings[i].name}</td>
-                <td><img class='listingThumbnail' src = '${data.Listings[i].url}'/></td>
-                <td>$${data.Listings[i].price}</td>
-                <td>${data.Listings[i].quantity}</td>
-                <td>${data.Listings[i].createdAt}
-                <td><button class = "edit-listing">Edit</button></td>
-            </tr>`
-
-            $("#tableBody").append(userListing);
-        }
-    };
+                $("#tableBody").append(listing);
+            }
+        };
+    });
 });
 
