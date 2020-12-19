@@ -33,7 +33,6 @@ $(document).ready(function () {
 
         $("#tableDiv").append(tableHTML);
 
-        switchVar = true;
       };
 
       for (i = 0; i < data.length; i++) {
@@ -45,6 +44,7 @@ $(document).ready(function () {
                   <td>${data[i].name}</td>
                   <td>${data[i].price}</td>
                   <td>${data[i].quantity}</td>
+                  <td><img src='${data[i].url}'/></td>
                   <td><button class = "edit-listing">Edit</button></td>
               </tr>`
 
