@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Lobster&display=swap"
     rel="stylesheet" />
-    <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
   <link rel="stylesheet" href="assets/css/style.css" />
   <title>Login</title>
 </head>
@@ -39,23 +39,26 @@
     </nav>
   </header>
 
-  <section class="container-log col-4">
+  <section class="row container-accTable">
     <p>Log In</p>
-    <div class="login col-md-12">
-      <div class="Username">
-        <label for="inputEmail4" class="form-label">Username</label>
-        <input type="email" class="form-control" id="inputEmail4" placeholder="Your Username" />
-      </div>
-      <div class="password">
-        <label for="inputPassword4" class="form-label">Password</label>
-        <input type="password" class="form-control" id="inputPassword4" placeholder="Your password" />
-      </div>
+    <div class="col-md-12">
+      <form class="login">
+        <div class="Username">
+          <label for="inputEmail4" class="form-label">Username</label>
+          <input type="email" class="inputRow form-control" id="inputEmail" placeholder="Your Username" value="chris@gmail.com" />
+        </div>
+        <div class="password">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input type="password" class="inputRow form-control" id="inputPassword" placeholder="Your password" value="pass"/>
+        </div>
     </div>
-    <div class="options">
-      <button type="submit" id="signin" class="btn btn-primary">
+    <div class= "options">
+      <button type="button" id="signin" class="btn btn-primary">
         Sign in
       </button>
       <a href="signup" id="newacc">Create an account</a>
+    </div>
+    </form>
     </div>
   </section>
 
@@ -70,6 +73,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
     integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
     crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./js/login.js"></script>
 </body>
 
 </html>
