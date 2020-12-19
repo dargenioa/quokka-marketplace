@@ -155,4 +155,27 @@ router.post("/api/listings", (req, res) => {
   });
 });
 
+
+router.put("/api/listings/:id", function(req,res){
+  db.Listing.update(
+    req.body,
+    {
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbListing) {
+      console.log(dbListing);
+    res.json(dbListing);
+  });
+});
+
+router.delete("/api/listings/:id", function(req,res){
+  db.Listing.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(dbListing) {
+    res.json(dbListing);
+  });
+});
 module.exports = router;
