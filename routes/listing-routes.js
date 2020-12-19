@@ -9,6 +9,33 @@ const axios = require("axios");
 const apiKey = process.env.API_KEY;
 console.log(apiKey);
 
+// router.get("/api/test/:item", function (req, res) {
+//   var queryURL = `https://api.walmartlabs.com/v1/search?apiKey=${process.env.API_KEY}&query=${req.params.item}`;
+//   axios
+//     .get(queryURL)
+//     .then(function (response) {
+//       // handle success
+//       const firstItem = response.data.items[0];
+//       const listingData = {
+//         name: firstItem.name,
+//         price: firstItem.msrp,
+//         quantity: 10,
+//         category: "Electronics",
+//         url: firstItem.largeImage,
+//         //remove hard-coded userid when necessary
+//         UserId: 1
+//       };
+//       db.Listing.create(listingData).then(function (data) {
+//         res.json(data);
+//       });
+//       // console.log(response.data);
+//       // res.json(response.data);
+//     })
+//     .catch(function (error) {
+//       // handle error
+//       console.log(error);
+//     });
+// });
 
 router.get("/api/listings", function (req, res) {
   let query = {};
@@ -20,7 +47,7 @@ router.get("/api/listings", function (req, res) {
   console.log(query);
   // Here we add an "include" property to our options in our findAll query
   // We set the value to an array of the models we want to include in a left outer join
-  // In this case, just db.Author
+  // In this case, just db.Listing
   db.Listing.findAll({
     where: query,
     include: [db.User]
@@ -45,32 +72,33 @@ router.get("/api/listings/:id", function (req, res) {
 });
 
 // //Returns Listings table information
-// router.get("/api/listings", function (req, res) {
-//   db.Listing.findAll({
-//     include: {
-//       models: db.User,
-//     }
-//   }).then(function (listing) {
-//     res.json(listing);
-//   });
-// });
+router.get("/api/listings", function (req, res) {
+  db.Listing.findAll({
+    include: {
+      models: db.User,
+    }
+  }).then(function (listing) {
+    res.json(listing);
+  });
+});
 
 //Post a listing to Listing table in db
-// router.post("/api/listings", function (req, res) {
-//   db.Listing.create({
-//     name: req.body.name,
-//     price: req.body.price,
-//     quantity: req.body.quantity,
-//     category: req.body.category,
-//     UserId: req.user.id,
-//   })
-//     .then(function (listing) {
-//       res.json(listing);
-//     })
-//     .catch(function (err) {
-//       console.log(err);
-//     });
-// });
+router.post("/api/listings/new", function (req, res) {
+  db.Listing.create({
+    name: req.body.name,
+    price: req.body.price,
+    quantity: req.body.quantity,
+    category: req.body.category,
+    UserId: req.user.id || req.body.UserId
+  })
+    .then(function (listing) {
+      res.json(listing);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+  //console.log(req.user);
+});
 
 
 //NEW Listing Post to /api/listings includes
