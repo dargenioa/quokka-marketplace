@@ -68,6 +68,7 @@ $(document).ready(function () {
   });
 
 
+
   $(document).on("click", ".delete-listing", function () {
     let id = $(this).data("id");
     console.log(id);
