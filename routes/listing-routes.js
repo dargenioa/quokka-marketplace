@@ -47,7 +47,7 @@ router.get("/api/listings", function (req, res) {
   console.log(query);
   // Here we add an "include" property to our options in our findAll query
   // We set the value to an array of the models we want to include in a left outer join
-  // In this case, just db.Author
+  // In this case, just db.Listing
   // db.Listing.findAll({
   //   where: query,
   //   include: [db.User]
