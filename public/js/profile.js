@@ -47,17 +47,22 @@ $(document).ready(function () {
             <td>$${data.Listings[i].price}</td>
             <td>${data.Listings[i].quantity}</td>
             <td>${date}</td>
-            <td><button class = "edit-listing btn btn-warning">Edit</button></td>
-            <td><button type="button" class="btn btn-danger">Delete</button></td>
+            <td><button type ="button" class = "edit-listing btn btn-warning" data-id="${data.Listings[i].id}">Edit</button></td>
+            <td><button type="button" class="btn btn-danger" data-id="${data.Listings[i].id}">Delete</button></td>
         </tr>`
 
       $("#tableBody").append(userListing);
     };
   });
 
-  $(".edit-listing").on("click", function() {
-    $.get("/edit-listings").then(function() {
-      
+  $(document).on("click", ".edit-listing", function() {
+    let id = $(this).data("id");
+    console.log(id);
+
+    $.get("/api/listings/" + id).then(function(data) {
+      $("input #item-input").val(data.name);
+      $("input ")
+      console.log(data);
     });
   });
 
