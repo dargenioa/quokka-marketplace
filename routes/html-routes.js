@@ -19,7 +19,7 @@ router.get("/login", function (req, res) {
 });
 
 router.get("/edit-listing", function (req, res) {
-  res.sendFile(path.join(__dirname, "../public/editListing.html"));
+  res.sendFile(path.join(__dirname, "../public/edit-listing.html"));
 });
 
 //Send User to signup.html
