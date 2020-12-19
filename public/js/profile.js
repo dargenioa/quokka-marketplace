@@ -77,14 +77,12 @@ $(document).ready(function () {
       url: "/api/listings/" + id
     })
       .then(function () {
-        console.log("deleted");
+        // console.log("deleted");
+        window.location.href = "/profile"
       })
 
   });
 
-
-
-  //ignore for meow
   $("#submit-edit").on("click", function () {
     $.ajax({
       method: "PUT",
