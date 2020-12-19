@@ -5,13 +5,70 @@ $(document).ready(function () {
     $(".member-name").text(data.email);
   });
 
-  //Need to get data from the user's listing table and dynamically
-  //create a display list.
-  $.get("/api/user_listings").then(function(data) {
-    //Code for appending to html ====>
-    $(".listing-ul").append(data.list-name)
+  // const {response} = require("express");
+  // let switchVar = false;
 
-    //=============================================
+  $("#addListing").on("click", function () {
+    $.ajax("/api/listings", {
+      type: "GET"
+    }).then(function (data) {
+      //   res.json(data);
+      if (!data.length) {
+        $("#tableDiv").text("You have no listings.")
+      } else {
+        let tableHTML =
+          `<table class="table table-striped table-hover">    
+                  <thead>
+                      <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col"></th>
+                      </tr>
+                  </thead>
+                  <tbody id = "tableBody">
+      
+                  </tbody>
+              </table>`;
+
+        $("#tableDiv").append(tableHTML);
+
+        switchVar = true;
+      };
+
+      for (i = 0; i < data.length; i++) {
+        var rowIndex = i + 1;
+        var userListing =
+
+          `<tr>
+                  <th scope="row">${rowIndex}</th>
+                  <td>${data[i].name}</td>
+                  <td>${data[i].price}</td>
+                  <td>${data[i].quantity}</td>
+                  <td><button class = "edit-listing">Edit</button></td>
+              </tr>`
+
+        $("#tableBody").append(userListing);
+      };
+    });
+
+
+    // function signUpUser(email, password) {
+    //     $.post("/api/signup", {
+    //       email: email,
+    //       password: password
+    //     })
+    //       .then(function(data) {
+    //         window.location.replace("/members");
+    //         // If there's an error, handle it by throwing up a bootstrap alert
+    //       })
+    //       .catch(handleLoginErr);
+    //   }
   })
+
+  // $(".edit-listing").on("click", function() {
+  //Allow editing and grab properties and update...
+  // });
 
 });
