@@ -5,7 +5,6 @@ const fs = require("fs");
 const dotenv = require("dotenv").config();
 
 const authenticated = require("../config/middleware/authenticated");
-const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require("constants");
 
 //GET user information to be used
 router.get("/api/user_data", function (req, res) {

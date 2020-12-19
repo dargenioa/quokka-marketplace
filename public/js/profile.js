@@ -11,7 +11,9 @@ $(document).ready(function () {
     email.val(data.email);
     phoneNumber.val(data.phoneNumber);
     memberUsername.text(data.username);
+    
+
   });
 
-  
+
 });
