@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Passport Authentication</title>
+    <title>Profile</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -42,19 +42,39 @@
             <ul id="profileUl">
               <label class="profileLabel" for="username">Username</label>
               <li>
-                <input class="profileInput" name="username" type="text" />
+                <input
+                  class="profileInput"
+                  name="username"
+                  type="text"
+                  placeholder="Username"
+                />
               </li>
               <label class="profileLabel" for="email">Email</label>
               <li>
-                <input class="profileInput" name="email" type="text" />
+                <input
+                  class="profileInput"
+                  name="email"
+                  type="text"
+                  placeholder="email"
+                />
               </li>
               <label class="profileLabel" for="password">Password</label>
               <li>
-                <input class="profileInput" name="password" type="text" />
+                <input
+                  class="profileInput"
+                  name="password"
+                  type="text"
+                  placeholder="New Password"
+                />
               </li>
               <label class="profileLabel" for="phoneNumber">Phone Number</label>
               <li>
-                <input class="profileInput" name="phoneNumber" type="text" />
+                <input
+                  class="profileInput"
+                  name="phoneNumber"
+                  type="text"
+                  placeholder="Phone Number"
+                />
               </li>
 
               <button id="profileSaveBtn">Save</button>
@@ -66,7 +86,7 @@
         <div class="col-sm-12 col-md-6 col-lg-7">
           <div class="row">
             <div id="addListing">
-              <button>Sell New Item</button>
+              <a href="/add-listing"><button>Sell New Item</button></a>
             </div>
           </div>
           <div class="row">

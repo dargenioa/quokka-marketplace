@@ -279,6 +279,7 @@ h3 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: rgb(32, 32, 32);
 }
 
 #profileInfo {
@@ -295,6 +296,7 @@ h3 {
   height: 37px;
   margin-bottom: 9px;
   font-size: 17px;
+  color: rgb(32, 32, 32);
 }
 #profileSaveBtn {
   margin-top: 20px;
