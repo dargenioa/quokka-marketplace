@@ -40,6 +40,14 @@ router.get("/api/user", function (req, res) {
   });
 });
 
+router.get("/api/all-users", function (req, res) {
+  db.User.findAll({
+    include: [db.Listing],
+  }).then(function (dbUsers) {
+    res.json(dbUsers);
+  });
+});
+
 //Posts User information through Sign Up form
 router.post("/api/signup", function (req, res) {
   db.User.create({
