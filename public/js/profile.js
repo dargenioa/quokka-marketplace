@@ -55,26 +55,26 @@ $(document).ready(function () {
     };
   });
 
+
+  
+
   $(document).on("click", ".edit-listing", function() {
     let id = $(this).data("id");
     console.log(id);
 
-    $.get("/api/listings/" + id).then(function(data) {
-      $("input #item-input").val(data.name);
-      $("input ")
-      console.log(data);
-    });
+    window.location.href = "/edit-listing?listing_id=" + id;
+
   });
 
 
-  //ignore for meow
-  $("#submit-edit").on("click", function() {
-    $.ajax({
-      method: "PUT",
-      url: "/api/listings"
-    }).then(function() {
-      window.location.href = "/profile"
-    });
-  });
+  // //ignore for meow
+  // $("#submit-edit").on("click", function() {
+  //   $.ajax({
+  //     method: "PUT",
+  //     url: "/api/listings"
+  //   }).then(function() {
+  //     window.location.href = "/profile"
+  //   });
+  // });
   
 });
