@@ -9,31 +9,33 @@ const axios = require("axios");
 const apiKey = process.env.API_KEY;
 console.log(apiKey);
 
-router.get("/api/test/:item", function (req, res) {
-  var queryURL = `https://api.walmartlabs.com/v1/search?apiKey=${process.env.API_KEY}&query=${req.params.item}`;
-  axios
-    .get(queryURL)
-    .then(function (response) {
-      // handle success
-      const firstItem = response.data.items[0];
-      const listingData = {
-        name: firstItem.name,
-        price: firstItem.msrp,
-        quantity: 10,
-        category: "Electronics",
-        url: firstItem.largeImage,
-      };
-      db.Listing.create(listingData).then(function (data) {
-        res.json(data);
-      });
-      // console.log(response.data);
-      // res.json(response.data);
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    });
-});
+// router.get("/api/test/:item", function (req, res) {
+//   var queryURL = `https://api.walmartlabs.com/v1/search?apiKey=${process.env.API_KEY}&query=${req.params.item}`;
+//   axios
+//     .get(queryURL)
+//     .then(function (response) {
+//       // handle success
+//       const firstItem = response.data.items[0];
+//       const listingData = {
+//         name: firstItem.name,
+//         price: firstItem.msrp,
+//         quantity: 10,
+//         category: "Electronics",
+//         url: firstItem.largeImage,
+//         //remove hard-coded userid when necessary
+//         UserId: 1
+//       };
+//       db.Listing.create(listingData).then(function (data) {
+//         res.json(data);
+//       });
+//       // console.log(response.data);
+//       // res.json(response.data);
+//     })
+//     .catch(function (error) {
+//       // handle error
+//       console.log(error);
+//     });
+// });
 
 router.get("/api/listings", function (req, res) {
   let query = {};

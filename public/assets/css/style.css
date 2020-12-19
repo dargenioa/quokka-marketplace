@@ -282,6 +282,12 @@ h3 {
   color: rgb(32, 32, 32);
 }
 
+.listingThumbnail {
+  width: 100px;
+  height: 100px;
+  border: 1px black solid;
+}
+
 #profileInfo {
   width: 100%;
   background: #f1f1f1;
