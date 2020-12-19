@@ -1,4 +1,4 @@
-// $.ajax("/api/all-user", {
+// $.ajax("/api/all-listings", {
 //     type: "GET"
 // }).then(function (data) {
 //     //   res.json(data);
@@ -40,3 +40,4 @@ $.ajax("/api/all-users", {
         }
     };
 });
+
