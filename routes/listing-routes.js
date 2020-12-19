@@ -157,6 +157,8 @@ router.post("/api/listings", (req, res) => {
 
 
 router.put("/api/listings/:id", function(req,res){
+  console.log("yo");
+  
   db.Listing.update(
     req.body,
     {

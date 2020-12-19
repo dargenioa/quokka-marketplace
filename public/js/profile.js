@@ -46,6 +46,7 @@ $(document).ready(function () {
             <td><img class='listingThumbnail' src = '${data.Listings[i].url}'/></td>
             <td>$${data.Listings[i].price}</td>
             <td>${data.Listings[i].quantity}</td>
+            <td>${data.Listings[i].category}</td>
             <td>${date}</td>
             <td><button type ="button" class = "edit-listing btn btn-warning" data-id="${data.Listings[i].id}">Edit</button></td>
             <td><button type="button" class="delete-listing btn btn-danger" data-id="${data.Listings[i].id}">Delete</button></td>
@@ -79,15 +80,6 @@ $(document).ready(function () {
         window.location.href = "/profile"
       })
 
-  });
-
-  $("#submit-edit").on("click", function () {
-    $.ajax({
-      method: "PUT",
-      url: "/api/listings"
-    }).then(function () {
-      window.location.href = "/profile"
-    });
   });
 
 });
