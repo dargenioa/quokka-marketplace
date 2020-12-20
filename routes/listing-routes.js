@@ -5,40 +5,11 @@ const fs = require("fs");
 const dotenv = require("dotenv").config();
 const axios = require("axios");
 
-// router.get("/api/test/:item", function (req, res) {
-//   var queryURL = `https://api.walmartlabs.com/v1/search?apiKey=${process.env.API_KEY}&query=${req.params.item}`;
-//   axios
-//     .get(queryURL)
-//     .then(function (response) {
-//       // handle success
-//       const firstItem = response.data.items[0];
-//       const listingData = {
-//         name: firstItem.name,
-//         price: firstItem.msrp,
-//         quantity: 10,
-//         category: "Electronics",
-//         url: firstItem.largeImage,
-//         //remove hard-coded userid when necessary
-//         UserId: 1
-//       };
-//       db.Listing.create(listingData).then(function (data) {
-//         res.json(data);
-//       });
-//       // console.log(response.data);
-//       // res.json(response.data);
-//     })
-//     .catch(function (error) {
-//       // handle error
-//       console.log(error);
-//     });
-// });
-
 router.get("/api/listings", function (req, res) {
   let query = {};
   if (req.query.user_id) {
     query.UserId = req.query.user_id;
   }
-
   console.log(req.query);
   console.log(query);
   // Here we add an "include" property to our options in our findAll query
@@ -46,7 +17,7 @@ router.get("/api/listings", function (req, res) {
   // In this case, just db.Listing
   db.Listing.findAll({
     where: query,
-    include: [db.User],
+    include: [db.User]
   }).then(function (dbListing) {
     res.json(dbListing);
   });
@@ -87,8 +58,8 @@ router.post("/api/listings/new", function (req, res) {
     category: req.body.category,
     UserId: req.user.id || req.body.UserId,
   })
-    .then(function (listing) {
-      res.json(listing);
+    .then(function () {
+      res.redirect("/profile");
     })
     .catch(function (err) {
       console.log(err);
@@ -138,8 +109,8 @@ router.post("/api/listings", (req, res) => {
           UserId: req.user.id,
           url: pictureURL,
         })
-          .then(function (listing) {
-            res.json(listing);
+          .then(function () {
+            res.redirect("/profile");
           })
           .catch(function (err) {
             console.log(err);
@@ -173,9 +144,14 @@ router.post("/api/edit-listings/:id", (req, res) => {
             name: fields.name,
             price: fields.price,
             quantity: fields.quantity,
+            category: fields.category,
             url: pictureURL || req.body.url,
           },
-          { where: { id: req.params.id } }
+          {
+            where: {
+              id: req.params.id
+            }
+          }
         )
           .then(function (listing) {
             console.log("Whats this");
@@ -206,6 +182,17 @@ router.delete("/api/listings/:id", function (req, res) {
     where: {
       id: req.params.id,
     },
+  }).then(function (dbListing) {
+    res.json(dbListing);
+  });
+});
+
+router.get("/api/category/:category", function (req, res) {
+  db.Listing.findAll({
+    where: {
+      category: req.params.category
+    },
+    include: [db.User]
   }).then(function (dbListing) {
     res.json(dbListing);
   });

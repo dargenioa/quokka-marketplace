@@ -5,6 +5,7 @@ $(document).ready(function () {
   let email = $("input[name=email]");
   let phoneNumber = $("input[name=phoneNumber]");
   let memberUsername = $(".member-username");
+  let index = 1;
 
   $("#profileSaveBtn").on("click", function () {
     phoneNumber.val().trim();
@@ -50,7 +51,7 @@ $(document).ready(function () {
     }
 
     for (i = 0; i < data.Listings.length; i++) {
-      let rowIndex = i + 1;
+      let rowIndex = index++;
       let date = new Date(data.Listings[i].createdAt).toDateString();
       let userListing = `<tr>
             <th scope="row">${rowIndex}</th>

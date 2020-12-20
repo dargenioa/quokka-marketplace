@@ -40,12 +40,15 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a class="dropdown-item" href="#">Mobiles & Tablets</a>
+                  <a class="dropdown-item cat" data-cat="Mobiles & Tablets" href="#">Mobiles & Tablets</a>
                 </li>
-                <li><a class="dropdown-item" href="#">TVs</a></li>
-                <li><a class="dropdown-item" href="#">Appliance</a></li>
-                <li><a class="dropdown-item" href="#">Home & Kitchen</a></li>
-                <li><a class="dropdown-item" href="#">Health & Beauty</a></li>
+                <li><a class="dropdown-item cat" data-cat="Tvs" href="#">TVs</a></li>
+                <li><a class="dropdown-item cat" data-cat="Appliance" href="#">Appliance</a></li>
+                <li><a class="dropdown-item cat" data-cat="Home & Kitchen" href="#">Home & Kitchen</a></li>
+                <li><a class="dropdown-item cat" data-cat="Health & Beauty" href="#">Health & Beauty</a>
+                <li><a class="dropdown-item" id="includeAll" href="#">Include All</a>
+
+                </li>
               </ul>
             </li>
           </ul>
@@ -144,11 +147,11 @@
         <table class="table table-striped table-hover">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Name</th>
               <th scope="col"></th>
               <th scope="col">Price</th>
               <th scope="col">Quantity</th>
+              <th scope="col">Category</th>
               <th scope="col">Date</th>
               <th scope="col">User</th>
               <th scope="col" id="purchaseCol"></th>
