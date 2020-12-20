@@ -3,9 +3,10 @@ const passport = require("../config/passport");
 const router = require("express").Router();
 const fs = require("fs");
 const dotenv = require("dotenv").config();
+const bcrypt = require("bcryptjs");
 
 const authenticated = require("../config/middleware/authenticated");
-const { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } = require("constants");
+const user = require("../models/user");
 
 //GET user information to be used
 router.get("/api/user_data", function (req, res) {
@@ -69,26 +70,40 @@ router.post("/api/login", passport.authenticate("local"), function (req, res) {
   console.log("my info ", req.user);
   res.json(req.user);
 });
+//checks to see if password is correct
 
-router.put("/api/user/:id", function(req,res){
-  db.Listing.update(
-    req.body,
-    {
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbListing) {
+router.put("/api/user/", function (req, res) {
+  db.User.update(req.body, {
+    where: {
+      id: req.user.id,
+    },
+  })
+    .then(function (dbListing) {
       console.log(dbListing);
+      res.json(dbListing);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
+
+router.put("/api/user/:id", function (req, res) {
+  db.Listing.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  }).then(function (dbListing) {
+    console.log(dbListing);
     res.json(dbListing);
   });
 });
 
-router.delete("/api/user/:id", function(req,res){
+router.delete("/api/user/:id", function (req, res) {
   db.Listing.destroy({
     where: {
-      id: req.params.id
-    }
-  }).then(function(dbListing) {
+      id: req.params.id,
+    },
+  }).then(function (dbListing) {
     res.json(dbListing);
   });
 });
