@@ -83,11 +83,13 @@ router.put("/api/user/:id", function(req,res){
   });
 });
 
+//delete account?
 router.delete("/api/user/:id", function(req,res){
-  db.Listing.destroy({
+  db.User.destroy({
     where: {
       id: req.params.id
-    }
+    },
+    include: [db.Listing]
   }).then(function(dbListing) {
     res.json(dbListing);
   });
