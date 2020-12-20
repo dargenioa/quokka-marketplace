@@ -6,13 +6,11 @@ $(document).ready(function () {
         for (let i = 0; i < data.length; i++) {
             let currentUser = data[i];
 
-            for (let j = 0; j < currentUser.Listings.length; j++) {
-                let rowIndex = index++;
+            for (let j = 0; j < currentUser.Listings.length; j++) {                
                 let date = new Date(currentUser.Listings[j].createdAt).toDateString();
                 let listing =
 
                     `<tr>
-                <th scope="row">${rowIndex}</th>
                 <td>${currentUser.Listings[j].name}</td>
                 <td><img class='listingThumbnail' src = '${currentUser.Listings[j].url}'/></td>
                 <td>$${currentUser.Listings[j].price}</td>
