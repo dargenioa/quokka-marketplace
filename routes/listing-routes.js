@@ -93,8 +93,8 @@ router.post("/api/listings/new", function (req, res) {
     category: req.body.category,
     UserId: req.user.id || req.body.UserId
   })
-    .then(function (listing) {
-      res.json(listing);
+    .then(function () {
+      res.redirect("/profile");
     })
     .catch(function (err) {
       console.log(err);
@@ -145,8 +145,8 @@ router.post("/api/listings", (req, res) => {
           UserId: req.user.id,
           url: pictureURL,
         })
-          .then(function (listing) {
-            res.json(listing);
+          .then(function () {
+            res.redirect("/profile");            
           })
           .catch(function (err) {
             console.log(err);
