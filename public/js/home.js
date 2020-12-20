@@ -5,7 +5,7 @@ $(document).ready(function () {
         for (let i = 0; i < data.length; i++) {
             let currentUser = data[i];
 
-            for (let j = 0; j < currentUser.Listings.length; j++) {                
+            for (let j = 0; j < currentUser.Listings.length; j++) {
                 let date = new Date(currentUser.Listings[j].createdAt).toDateString();
                 let listing =
 
@@ -39,7 +39,7 @@ $(document).ready(function () {
         <td>${results[j].quantity}</td>
         <td>${results[j].category}</td>
         <td>${date}</td>
-        <td>${results[j].username}</td>
+        <td>${results[j].User.username}</td>
         <td><button type="button" class="btn btn-success">Purchase</button></td>
     </tr>`
 
@@ -60,10 +60,11 @@ $(document).ready(function () {
         }).then(sortListings);
     });
 
-    $("#includeAll").on("click", function () {    
-    $.ajax("/api/all-users", {
-        type: "GET"
-    }).then(generateListingTable);
-});
+    $("#includeAll").on("click", function () {
+        $.ajax("/api/all-users", {
+            type: "GET"
+        }).then(generateListingTable);
+    });
+
 
 });

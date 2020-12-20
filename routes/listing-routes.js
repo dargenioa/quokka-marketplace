@@ -191,7 +191,8 @@ router.get("/api/category/:category", function (req, res) {
   db.Listing.findAll({
     where: {
       category: req.params.category
-    }
+    },
+    include: [db.User]
   }).then(function (dbListing) {
     res.json(dbListing);
   });
