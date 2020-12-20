@@ -109,12 +109,7 @@
 
     <section class="container ad col-12">
       <h5>Edit listing</h5>
-      <form
-        class="row g-3"
-        action="/api/listings"
-        enctype="multipart/form-data"
-        method="post"
-      >
+      <form class="row g-3" enctype="multipart/form-data" method="post">
         <div class="col-md-6">
           <!-- Name Input -->
           <label for="name" class="form-label">Name of Item</label>
@@ -147,12 +142,7 @@
         <div class="mb-3">
           <!-- File Upload -->
           <label for="upload" class="form-label">Photo</label>
-          <input
-            class="form-control"
-            type="file"
-            id="formFile"
-            name="upload"
-          />
+          <input class="form-control" type="file" id="formFile" name="upload" />
         </div>
         <div class="col-md-6">
           <!-- Quantity -->
@@ -208,7 +198,9 @@
         </div>
 
         <div class="col-12">
-          <button type="submit" id= "submit-edit" class="btn btn-primary">Submit</button>
+          <button type="submit" id="submit-edit" class="btn btn-primary">
+            Submit
+          </button>
         </div>
       </form>
     </section>

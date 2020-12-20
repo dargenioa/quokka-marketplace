@@ -43,7 +43,7 @@ router.get("/api/listings", function (req, res) {
   db.Listing.findAll({
     include: {
       models: db.User,
-    }
+    },
   }).then(function (listing) {
     res.json(listing);
   });
@@ -56,7 +56,7 @@ router.post("/api/listings/new", function (req, res) {
     price: req.body.price,
     quantity: req.body.quantity,
     category: req.body.category,
-    UserId: req.user.id || req.body.UserId
+    UserId: req.user.id || req.body.UserId,
   })
     .then(function () {
       res.redirect("/profile");
@@ -66,7 +66,6 @@ router.post("/api/listings/new", function (req, res) {
     });
   //console.log(req.user);
 });
-
 
 //NEW Listing Post to /api/listings includes
 
@@ -86,14 +85,14 @@ cloudinary.config({
 
 //Post to cloudinary
 router.post("/api/listings", (req, res) => {
-  //Init Form 
+  //Init Form
   let form = new Formidable();
   //Save the file inside cloudinary
   //Handles file upload
   let pictureURL;
   //Pass req parameter and Callback function for inputs and image file
   form.parse(req, async (err, fields, files) => {
-    //Send Path through cloudinary it returns a url 
+    //Send Path through cloudinary it returns a url
     cloudinary.uploader
       .upload(files.upload.path, (result) => {
         //The info about the image
@@ -121,24 +120,68 @@ router.post("/api/listings", (req, res) => {
 });
 
 
-router.put("/api/listings/:id", function (req, res) {
-  db.Listing.update(
-    req.body,
-    {
-      where: {
-        id: req.params.id
-      }
-    }).then(function (dbListing) {
-      console.log(dbListing);
-      res.json(dbListing);
-    });
+
+//PUT to cloudinary
+router.post("/api/edit-listings/:id", (req, res) => {
+  //Init Form
+  let form = new Formidable();
+  //Save the file inside cloudinary
+  //Handles file upload
+  let pictureURL;
+  //Pass req parameter and Callback function for inputs and image file
+  form.parse(req, async (err, fields, files) => {
+    //Send Path through cloudinary it returns a url
+    cloudinary.uploader
+      .upload(files.upload.path, (result) => {
+        //The info about the image
+        // console.log(result);
+        pictureURL = result.secure_url;
+      })
+      .then(function () {
+        //Then create a listing with information
+        db.Listing.update(
+          {
+            name: fields.name,
+            price: fields.price,
+            quantity: fields.quantity,
+            category: fields.category,
+            url: pictureURL || req.body.url,
+          },
+          {
+            where: {
+              id: req.params.id
+            }
+          }
+        )
+          .then(function (listing) {
+            console.log("Whats this");
+            res.send(listing);
+          })
+          .catch(function (err) {
+            console.log(err);
+          });
+      });
+  });
 });
+
+// router.put("/api/listings/:id", function (req, res) {
+//   console.log("yo");
+
+//   db.Listing.update(req.body, {
+//     where: {
+//       id: req.params.id,
+//     },
+//   }).then(function (dbListing) {
+//     console.log(dbListing);
+//     res.json(dbListing);
+//   });
+// });
 
 router.delete("/api/listings/:id", function (req, res) {
   db.Listing.destroy({
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   }).then(function (dbListing) {
     res.json(dbListing);
   });

@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    let index = 1;
 
     const generateListingTable = (data) => {
         $("#tableBody").empty();
@@ -30,12 +29,10 @@ $(document).ready(function () {
         $("#tableBody").empty();
 
         for (let j = 0; j < results.length; j++) {
-            let rowIndex = index++;
             let date = new Date(results[j].createdAt).toDateString();
             let listing =
 
                 `<tr>
-        <th scope="row">${rowIndex}</th>
         <td>${results[j].name}</td>
         <td><img class='listingThumbnail' src = '${results[j].url}'/></td>
         <td>$${results[j].price}</td>
