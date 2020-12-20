@@ -1,4 +1,6 @@
 $(document).ready(function () {
+let index = 1;
+
     $.ajax("/api/all-users", {
         type: "GET"
     }).then(function (data) {
@@ -7,7 +9,7 @@ $(document).ready(function () {
             let currentUser = data[i];
 
             for (let j = 0; j < currentUser.Listings.length; j++) {
-                let rowIndex = j + 1;
+                let rowIndex = index++;
                 let date = new Date(currentUser.Listings[j].createdAt).toDateString();
                 let listing =
 
