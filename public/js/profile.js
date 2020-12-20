@@ -5,9 +5,7 @@ $(document).ready(function () {
   let email = $("input[name=email]");
   let phoneNumber = $("input[name=phoneNumber]");
   let memberUsername = $(".member-username");
-  let newPass = $("input[name=newPassword]");
-  let currentPass = $("input[name=password]");
-  let encryptedPass;
+
   $("#profileSaveBtn").on("click", function () {
     phoneNumber.val().trim();
     let data = {
@@ -15,7 +13,6 @@ $(document).ready(function () {
       username: username.val().trim(),
       phoneNumber: phoneNumber.val().trim(),
     };
-    console.log(data);
     $.ajax({
       method: "PUT",
       url: "/api/user",
@@ -31,7 +28,6 @@ $(document).ready(function () {
     email.val(data.email);
     phoneNumber.val(data.phoneNumber);
     memberUsername.text(data.username);
-    encryptedPass = data.password;
 
     if (!data.Listings.length) {
       $("#tableDiv").text("You have no listings.");
