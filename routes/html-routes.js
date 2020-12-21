@@ -35,7 +35,6 @@ router.get("/home", authenticated, function (req, res) {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-//Poop Route
 router.get("/add-listing", function (req, res) {
   if (!req.user) {
     res.redirect("/home");
@@ -45,6 +44,10 @@ router.get("/add-listing", function (req, res) {
 
 router.get("/profile", authenticated, function (req, res) {
   res.sendFile(path.join(__dirname, "../public/profile.html"));
+});
+
+router.get("/cart", authenticated, function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/cart.html"));
 });
 
 //Export router

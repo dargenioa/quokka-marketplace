@@ -17,7 +17,7 @@ $(document).ready(function () {
                 let listing =
 
                     `<tr>
-                <td>${currentUser.Listings[j].name}</td>
+                <td data-name:>${currentUser.Listings[j].name}</td>
                 <td><img class='listingThumbnail' src = '${currentUser.Listings[j].url}'/></td>
                 <td>$${currentUser.Listings[j].price}</td>
                 <td>${currentUser.Listings[j].quantity}</td>
@@ -102,11 +102,21 @@ $(document).ready(function () {
                     quantity: newQuantity
                 }
             }).then(function () {
-                window.location.reload();
+                // window.location.reload();
+                $.ajax("/api/add-to-cart/", {
+                    type: "POST",
+                    data: {
+                        name: "name",
+                        price: 1,
+                        quantity: 1,
+                        category: "req.body.category",
+                        url: "req.body.url"
+                    }
+                }).then(function (results) {
+                    console.log(results)
+                });
             });
-        }
+        };
+
     });
-
-
-
 });
