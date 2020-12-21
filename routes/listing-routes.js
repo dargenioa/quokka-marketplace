@@ -83,6 +83,21 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
+//POST to cart
+router.post("/api/cart-items", (req, res) => {
+  db.cartItem
+    .create({
+      name: req.body.name,
+      price: req.body.price,
+      category: req.body.category,
+      url: req.body.url,
+      UserId: req.user.id,
+    })
+    .then((cartItem) => {
+      res.send("Youre Item was added to your Cart");
+    });
+});
+
 //Post to cloudinary
 router.post("/api/listings", (req, res) => {
   //Init Form
@@ -118,14 +133,6 @@ router.post("/api/listings", (req, res) => {
       });
   });
 });
-
-function fileToUrl(filePath, addUrl) {
-  cloudinary.uploader.upload(filePath, (result) => {
-    //The info about the image
-    // console.log(result);
-    return result.secure_url;
-  });
-}
 
 //PUT to cloudinary
 router.post("/api/edit-listings/:id", (req, res) => {

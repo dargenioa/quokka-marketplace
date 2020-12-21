@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
-  const Listing = sequelize.define(
-    "Listing",
+  const cartItem = sequelize.define(
+    "cartItem",
     {
       name: {
         type: DataTypes.STRING,
@@ -9,12 +9,9 @@ module.exports = function (sequelize, DataTypes) {
           len: [1, 255],
         },
       },
+
       price: {
         type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
-      },
-      quantity: {
-        type: DataTypes.INTEGER,
         allowNull: false,
       },
       category: {
@@ -23,10 +20,6 @@ module.exports = function (sequelize, DataTypes) {
         validate: {
           len: [1, 255],
         },
-      },
-      purchased: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
       },
 
       url: {
@@ -38,13 +31,11 @@ module.exports = function (sequelize, DataTypes) {
     }
   );
 
-  Listing.associate = function (models) {
-    // We're saying that a listing should belong to a User
-    // A listing can't be created without a User due to the foreign key constraint
-    Listing.belongsTo(models.User, {
+  cartItem.associate = function (models) {
+    cartItem.belongsTo(models.User, {
       foreignKey: "UserId",
     });
   };
 
-  return Listing;
+  return cartItem;
 };
