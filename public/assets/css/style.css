@@ -153,8 +153,10 @@ span {
 /*/////////////////////////////////////////////////// Sell With Us Page /////////////////////////////////////////////*/
 
 #newCust {
-  margin: 80px;
+  margin: 80px ;
 }
+
+
 h3 {
   font-size: 30px;
   color: #3b3b3b;
@@ -404,5 +406,29 @@ h3 {
  .adtitle{
    font-size: 30px;
  }
+ #newCust {
+  margin: 50px 0 ;
+  }
+
+  #benefits {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10%;
+    padding: 20px;
+    height: auto;
+    margin-bottom: 100px;
+    width: 100%;
+  }
+  #whyQuoka{
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  #whyQuoka img {
+    width: 70px;
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+  }
 
 }
