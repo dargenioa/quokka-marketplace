@@ -83,6 +83,19 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
+//POST to cart
+router.post("/api/cartItems", (req, res) => {
+  db.cartItem({
+    name: req.body.name,
+    price: req.body.price,
+    category: req.body.category,
+    url: req.body.url,
+    UserId: req.user.id,
+  }).then((cartItem) => {
+    res.send("Youre Item was added to your Cart");
+  });
+});
+
 //Post to cloudinary
 router.post("/api/listings", (req, res) => {
   //Init Form
