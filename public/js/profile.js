@@ -32,22 +32,6 @@ $(document).ready(function () {
 
     if (!data.Listings.length) {
       $("#tableDiv").text("You have no listings.");
-    } else {
-      // let tableHTML =
-      //   `<table class="table table-striped table-hover">
-      //           <thead>
-      //               <tr>
-      //               <th scope="col">#</th>
-      //               <th scope="col">Name</th>
-      //               <th scope="col">Price</th>
-      //               <th scope="col">Quantity</th>
-      //               <th scope="col"></th>
-      //               </tr>
-      //           </thead>
-      //           <tbody id = "tableBody">
-      //           </tbody>
-      //       </table>`;
-      // $("#tableDiv").append(tableHTML);
     }
 
     for (i = 0; i < data.Listings.length; i++) {

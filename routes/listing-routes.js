@@ -98,6 +98,8 @@ router.post("/api/cart-items", (req, res) => {
     });
 });
 
+
+
 //Post to cloudinary
 router.post("/api/listings", (req, res) => {
   //Init Form
@@ -106,7 +108,7 @@ router.post("/api/listings", (req, res) => {
   //Handles file upload
   let pictureURL;
   //Pass req parameter and Callback function for inputs and image file
-  form.parse(req, async (err, fields, files) => {
+  form.parse(req,  (err, fields, files) => {
     //Send Path through cloudinary it returns a url
     cloudinary.uploader
       .upload(files.upload.path, (result) => {
