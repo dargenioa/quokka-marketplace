@@ -58,75 +58,53 @@
                 >
               </li>
 
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Products
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a
-                      class="dropdown-item cat"
-                      data-cat="Mobiles & Tablets"
-                      href="#"
-                      >Mobiles & Tablets</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item cat" data-cat="Tvs" href="#">TVs</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item cat" data-cat="Appliance" href="#"
-                      >Appliance</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item cat"
-                      data-cat="Home & Kitchen"
-                      href="#"
-                      >Home & Kitchen</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item cat"
-                      data-cat="Health & Beauty"
-                      href="#"
-                      >Health & Beauty</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" id="includeAll" href="#"
-                      >Include All</a
-                    >
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <!-- Search bar -->
-            <form class="d-flex" id="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search Products"
-                aria-label="Search"
-              />
-              <button type="submit" class="btn btn-primary">Search</button>
-            </form>
-            <!-- Login Icons -->
-            <!-- <ion-icon name="person-circle-outline"></ion-icon> -->
-            <a id="accountLink" class="link" href="login"> Login </a>
-            <a class="link" href="cart">
-              <ion-icon name="cart-outline"></ion-icon>
-            </a>
-          </div>
+<body>
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <!-- Brand Name -->
+        <a class="navbar-brand" id="brandname" href="home">Quokka Marketplace</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Options  -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" id ="sell-shop" aria-current="page" href="sell.html">Sell and Shop with Us</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Products
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item cat" data-cat="Mobiles & Tablets" href="#">Mobiles & Tablets</a>
+                </li>
+                <li><a class="dropdown-item cat" data-cat="Tvs" href="#">TVs</a></li>
+                <li><a class="dropdown-item cat" data-cat="Appliance" href="#">Appliance</a></li>
+                <li><a class="dropdown-item cat" data-cat="Home & Kitchen" href="#">Home & Kitchen</a></li>
+                <li><a class="dropdown-item cat" data-cat="Health & Beauty" href="#">Health & Beauty</a>
+                <li><a class="dropdown-item" id="includeAll" href="#">Include All</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <!-- Search bar
+          <div class="d-flex" id="search">
+            <input class="form-control me-2" type="text" name="search-bar" placeholder="Search Products" aria-label="Search" id="search-bar"/>
+            <button type="submit" class="btn btn-primary">Search</button>
+          </div> -->
+          <!-- Login Icons -->
+          <!-- <ion-icon name="person-circle-outline"></ion-icon> -->
+          <a id="accountLink" class="link" href="login"> Login </a>
+          <a class="link" href="">
+            <ion-icon name="cart-outline"></ion-icon>
+          </a>
         </div>
       </nav>
     </header>
@@ -343,60 +321,59 @@
       </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="container-footer col-12">
-      <div class="container">
-        <div class="row row-col-12">
-          <div class="col">
-            <ul>
-              <p>Get to know Us</p>
-              <li>Careers</li>
-              <li>Blog</li>
-              <li>About Quokka</li>
-              <li>Sustainability</li>
-              <li>Press Center</li>
-              <li>Investor Relations</li>
-              <li>Quokka Devices</li>
-              <li>Qoukka Tours</li>
-            </ul>
-          </div>
-          <div class="col">
-            <ul>
-              <p>Make Money with Us</p>
-              <li>Sell products on Qoukka</li>
-              <li>Sell apps on Qoukka</li>
-              <li>Become an Affiliate</li>
-              <li>Advertive You products</li>
-              <li>Self-Pulished with Us</li>
-              <li>Host an Qoukka Hub</li>
-            </ul>
-          </div>
-          <div class="col">
-            <ul>
-              <p>Qoukka Payment Products</p>
-              <li>Qoukka Rewards Visa</li>
-              <li>Qoukka.com Store Card</li>
-              <li>Qoukka Business Card</li>
-              <li>Qoukka Business Line of Credit</li>
-              <li>Shop with Points</li>
-              <li>Credit Card Marketplace</li>
-              <li>Reload Your Balance</li>
-              <li>Qoukka Currency Converter</li>
-            </ul>
-          </div>
-          <div class="col">
-            <ul>
-              <p>Let Us Help You</p>
-              <li>Qoukka and COVID 19</li>
-              <li>Your Account</li>
-              <li>Your Orders</li>
-              <li>Shipping Rates & Policies</li>
-              <li>Qoukka Prime</li>
-              <li>Returns & Replacements</li>
-              <li>Qoukka Assistant</li>
-              <li>Help</li>
-            </ul>
-          </div>
+  <!-- Footer -->
+  <footer class="container-footer col-12">
+    <div class="container">
+      <div class="row row-col-12">
+        <div class="col">
+          <ul>
+            <p>Get to know Us</p>
+            <li>Careers</li>
+            <li>Blog</li>
+            <li>About Quokka</li>
+            <li>Sustainability</li>
+            <li>Press Center</li>
+            <li>Investor Relations</li>
+            <li>Quokka Devices</li>
+            <li>Quokka Tours</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul>
+            <p>Make Money with Us</p>
+            <li>Sell products on Quokka</li>
+            <li>Sell apps on Quokka</li>
+            <li>Become an Affiliate</li>
+            <li>Advertive You products</li>
+            <li>Self-Pulished with Us</li>
+            <li>Host an Quokka Hub</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul>
+            <p>Quokka Payment Products</p>
+            <li>Quokka Rewards Visa</li>
+            <li>Quokka.com Store Card</li>
+            <li>Quokka Business Card</li>
+            <li>Quokka Business Line of Credit</li>
+            <li>Shop with Points</li>
+            <li>Credit Card Marketplace</li>
+            <li>Reload Your Balance</li>
+            <li>Quokka Currency Converter</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul>
+            <p>Let Us Help You</p>
+            <li>Quokka and COVID 19</li>
+            <li>Your Account</li>
+            <li>Your Orders</li>
+            <li>Shipping Rates & Policies</li>
+            <li>Quokka Prime</li>
+            <li>Returns & Replacements</li>
+            <li>Quokka Assistant</li>
+            <li>Help</li>
+          </ul>
         </div>
       </div>
     </footer>
@@ -430,14 +407,13 @@
     <script type="text/javascript">
       let accPTag = $("#accountPtag");
       let accLink = $("#accountLink");
-
-      $.get("/api/user_data").then(function (data) {
-        if (data.id) {
-          accLink.text("Profile");
-          accLink.attr("href", "profile");
-        }
-      });
-    </script>
-    <script src="js/home.js"></script>
+    $.get("/api/user_data").then(function (data) {
+      if (data.id) {
+        accLink.text("Profile");
+        accLink.attr("href", "profile");
+      }
+    });
+  </script>
+  <script src="js/home.js"></script>
   </body>
 </html>
