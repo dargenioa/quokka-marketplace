@@ -144,7 +144,7 @@ router.post("/api/edit-listings/:id", (req, res) => {
             name: fields.name,
             price: fields.price,
             quantity: fields.quantity,
-            category: fields.category,
+            // category: fields.category,
             url: pictureURL || req.body.url,
           },
           {
