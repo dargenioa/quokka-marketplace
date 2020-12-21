@@ -132,9 +132,7 @@ span {
   margin-bottom: 20px;
 }
 
-#signUpTitle {
-  /* margin-left: -20px; */
-}
+
 
 .main-content {
   min-height: 70vh;
@@ -208,13 +206,17 @@ h3 {
 /*/////////////////////////////////////////////////// Ad Page /////////////////////////////////////////////*/
 
 .ad {
-  background-color: rgb(233, 229, 229);
+  /* background-color: rgb(233, 229, 229); */
   width: 50%;
-  height: 100vh;
+  /* height: 100vh; */
   margin-top: 40px;
   padding: 30px;
   padding-bottom: 30px;
   border-radius: 3%;
+}
+
+.adtitle{
+  margin-bottom: 40px;
 }
 
 .form-label {
@@ -397,6 +399,10 @@ h3 {
  }
  .logtitle{
    font-size:30px;
+ }
+
+ .adtitle{
+   font-size: 30px;
  }
 
 }
