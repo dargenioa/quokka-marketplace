@@ -2,6 +2,7 @@ const express = require("express");
 const htmlRoutes = require("./routes/html-routes");
 const userRoutes = require("./routes/user-routes");
 const listingRoute = require("./routes/listing-routes");
+const cartRoute = require("./routes/cart-route");
 const db = require("./models");
 const passport = require("./config/passport");
 const session = require("express-session");
@@ -29,6 +30,7 @@ app.use(passport.session());
 //Routes
 app.use(userRoutes);
 app.use(listingRoute);
+app.use(cartRoute);
 app.use(htmlRoutes);
 
 //Sequelize
