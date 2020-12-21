@@ -32,7 +32,7 @@ $(document).ready(function () {
 
     if (!data.Listings.length) {
       $("#tableDiv").text("You have no listings.");
-    } 
+    }
 
     for (i = 0; i < data.Listings.length; i++) {
       let rowIndex = index++;
