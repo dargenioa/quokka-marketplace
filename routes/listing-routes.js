@@ -153,9 +153,8 @@ router.post("/api/edit-listings/:id", (req, res) => {
             }
           }
         )
-          .then(function (listing) {
-            console.log("Whats this");
-            res.send(listing);
+          .then(function () {
+            res.redirect("/profile");
           })
           .catch(function (err) {
             console.log(err);
