@@ -148,7 +148,13 @@ router.post("/api/listings", (req, res) => {
   });
 });
 
-
+function fileToUrl(filePath, addUrl) {
+  cloudinary.uploader.upload(filePath, (result) => {
+    //The info about the image
+    // console.log(result);
+    return result.secure_url;
+  });
+}
 
 //PUT to cloudinary
 router.post("/api/edit-listings/:id", (req, res) => {
@@ -158,32 +164,33 @@ router.post("/api/edit-listings/:id", (req, res) => {
   //Handles file upload
   let pictureURL;
   //Pass req parameter and Callback function for inputs and image file
-  form.parse(req, async (err, fields, files) => {
+  form.parse(req, (err, fields, files) => {
     //Send Path through cloudinary it returns a url
-    cloudinary.uploader
-      .upload(files.upload.path, (result) => {
+    if (files.upload) {
+      cloudinary.uploader.upload(files.upload.path, (result) => {
         //The info about the image
-        // console.log(result);
         pictureURL = result.secure_url;
+      });
+    } else {
+      pictureURL = req.body.url;
+    }
+    console.log(pictureURL);
+    //Then create a listing with information
+    let start = db.Listing.update(
+      {
+        name: fields.name,
+        price: fields.price,
+        quantity: fields.quantity,
+        url: pictureURL,
+      },
+      { where: { id: req.params.id } }
+    )
+      .then(function (listing) {
+        console.log("Whats this");
+        // res.send(listing);
       })
-      .then(function () {
-        //Then create a listing with information
-        db.Listing.update(
-          {
-            name: fields.name,
-            price: fields.price,
-            quantity: fields.quantity,
-            url: pictureURL || req.body.url,
-          },
-          { where: { id: req.params.id } }
-        )
-          .then(function (listing) {
-            console.log("Whats this");
-            res.send(listing);
-          })
-          .catch(function (err) {
-            console.log(err);
-          });
+      .catch(function (err) {
+        console.log(err);
       });
   });
 });
