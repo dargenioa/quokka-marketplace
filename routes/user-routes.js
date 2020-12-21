@@ -3,7 +3,6 @@ const passport = require("../config/passport");
 const router = require("express").Router();
 const fs = require("fs");
 const dotenv = require("dotenv").config();
-const bcrypt = require("bcryptjs");
 
 const authenticated = require("../config/middleware/authenticated");
 const user = require("../models/user");
@@ -28,7 +27,7 @@ router.get("/api/user", function (req, res) {
   // In this case, just db.Post
 
   db.User.findAll({
-    include: [db.Listing],
+    include: [db.Listing, db.cartItem],
   }).then(function (dbUsers) {
     let user;
     for (let i = 0; i < dbUsers.length; i++) {
@@ -43,7 +42,7 @@ router.get("/api/user", function (req, res) {
 
 router.get("/api/all-users", function (req, res) {
   db.User.findAll({
-    include: [db.Listing],
+    include: [db.Listing, db.cartItem],
   }).then(function (dbUsers) {
     res.json(dbUsers);
   });
