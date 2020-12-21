@@ -255,3 +255,93 @@ h3 {
     width: 100%;
   }
 }
+
+#profileUl {
+  padding: 30px;
+}
+
+#addListing {
+  width: 100%;
+  height: 100px;
+  padding: 20px;
+  background: #3a3a3a;
+  border-radius: 3px;
+  box-shadow: 0 0 20px #000000b3;
+  font-family: "montserrat", sans-serif;
+  position: relative;
+}
+#addListing button {
+  height: 68px;
+  border-radius: 8px;
+  width: 247px;
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(32, 32, 32);
+}
+
+.listingThumbnail {
+  width: 100px;
+  height: 100px;
+  border: 1px black solid;
+}
+
+#profileInfo {
+  width: 100%;
+  background: #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #000000b3;
+  font-family: "montserrat", sans-serif;
+  position: relative;
+}
+
+.profileInput {
+  width: 100%;
+  height: 37px;
+  margin-bottom: 9px;
+  font-size: 17px;
+  color: rgb(32, 32, 32);
+}
+#profileSaveBtn {
+  margin-top: 20px;
+  width: 80px;
+}
+
+.profileLabel {
+  font-size: large;
+  color: black;
+}
+
+#profileIntro {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#logoutLink {
+  color: black;
+  font-size: 20px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  text-decoration: none;
+}
+#accountLink,
+#newacc {
+  text-decoration: none;
+}
+#quokkaHome {
+  font-family: "Libre Baskerville", serif;
+  font-size: 25px;
+  color: #000;
+  position: absolute;
+  top: 52%;
+  transform: translate(0, -50%);
+  margin-left: -4px;
+  text-decoration: none;
+}
+
+#profileNav {
+  position: relative;
+}

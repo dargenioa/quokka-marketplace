@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Profile</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css"
+    />
+    <link href="./assets/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header>
+      <!-- Nav -->
+      <nav id="profileNav" class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <!-- Brand Name -->
+          <a id="quokkaHome" href="home">Quokka Marketplace</a>
+        </div>
+      </nav>
+      <!-- Nav End -->
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <h2 id="profileIntro">
+            Welcome <span class="member-username"></span>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-5">
+          <div id="profileInfo">
+            <ul id="profileUl">
+              <label class="profileLabel" for="username">Username</label>
+              <li>
+                <input
+                  class="profileInput"
+                  name="username"
+                  type="text"
+                  placeholder="Username"
+                />
+              </li>
+              <label class="profileLabel" for="email">Email</label>
+              <li>
+                <input
+                  class="profileInput"
+                  name="email"
+                  type="text"
+                  placeholder="email"
+                />
+              </li>
+              <label class="profileLabel" for="phoneNumber">Phone Number</label>
+              <li>
+                <input
+                  class="profileInput"
+                  name="phoneNumber"
+                  type="text"
+                  placeholder="Phone Number"
+                />
+              </li>
+
+              <button id="profileSaveBtn">Save</button>
+              <a id="logoutLink" href="/logout">Logout</a>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-7">
+          <div class="row">
+            <div id="addListing">
+              <a href="/add-listing" id="sellBtn"
+                ><button>Sell New Item</button></a
+              >
+            </div>
+            <div id="tableDiv" class="col-9">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col"></th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Date</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+
+                <tbody id="tableBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row">
+            <ul id="liveItems"></ul>
+          </div>
+
+          <!-- end of col -->
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/profile.js"></script>
+  </body>
+</html>

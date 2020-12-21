@@ -20,6 +20,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     category: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         len: [1, 255],
       },
@@ -31,12 +32,17 @@ module.exports = function (sequelize, DataTypes) {
 
     url: {
       type: DataTypes.STRING,
-    },
-  });
+    }
+  },
+  {
+    freezeTableName: true
+
+  }
+  );
 
   Listing.associate = function (models) {
     // We're saying that a listing should belong to a User
-    // A Post can't be created without a User due to the foreign key constraint
+    // A listing can't be created without a User due to the foreign key constraint
     Listing.belongsTo(models.User, {
       foreignKey: {
         allowNull: false,

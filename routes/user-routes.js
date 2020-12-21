@@ -3,8 +3,10 @@ const passport = require("../config/passport");
 const router = require("express").Router();
 const fs = require("fs");
 const dotenv = require("dotenv").config();
+const bcrypt = require("bcryptjs");
 
 const authenticated = require("../config/middleware/authenticated");
+const user = require("../models/user");
 
 //GET user information to be used
 router.get("/api/user_data", function (req, res) {
@@ -24,10 +26,26 @@ router.get("/api/user", function (req, res) {
   // Here we add an "include" property to our options in our findAll query
   // We set the value to an array of the models we want to include in a left outer join
   // In this case, just db.Post
+
   db.User.findAll({
     include: [db.Listing],
-  }).then(function (dbUser) {
-    res.json(dbUser);
+  }).then(function (dbUsers) {
+    let user;
+    for (let i = 0; i < dbUsers.length; i++) {
+      if (dbUsers[i].id === req.user.id) {
+        user = dbUsers[i];
+      }
+    }
+
+    res.json(user);
+  });
+});
+
+router.get("/api/all-users", function (req, res) {
+  db.User.findAll({
+    include: [db.Listing],
+  }).then(function (dbUsers) {
+    res.json(dbUsers);
   });
 });
 
@@ -51,6 +69,43 @@ router.post("/api/signup", function (req, res) {
 router.post("/api/login", passport.authenticate("local"), function (req, res) {
   console.log("my info ", req.user);
   res.json(req.user);
+});
+//checks to see if password is correct
+
+router.put("/api/user/", function (req, res) {
+  db.User.update(req.body, {
+    where: {
+      id: req.user.id,
+    },
+  })
+    .then(function (dbListing) {
+      console.log(dbListing);
+      res.json(dbListing);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+});
+
+router.put("/api/user/:id", function (req, res) {
+  db.Listing.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  }).then(function (dbListing) {
+    console.log(dbListing);
+    res.json(dbListing);
+  });
+});
+
+router.delete("/api/user/:id", function (req, res) {
+  db.Listing.destroy({
+    where: {
+      id: req.params.id,
+    },
+  }).then(function (dbListing) {
+    res.json(dbListing);
+  });
 });
 
 //Logout route
