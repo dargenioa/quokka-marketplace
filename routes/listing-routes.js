@@ -17,7 +17,7 @@ router.get("/api/listings", function (req, res) {
   // In this case, just db.Listing
   db.Listing.findAll({
     where: query,
-    include: [db.User]
+    include: [db.User],
   }).then(function (dbListing) {
     res.json(dbListing);
   });
@@ -119,7 +119,13 @@ router.post("/api/listings", (req, res) => {
   });
 });
 
-
+function fileToUrl(filePath, addUrl) {
+  cloudinary.uploader.upload(filePath, (result) => {
+    //The info about the image
+    // console.log(result);
+    return result.secure_url;
+  });
+}
 
 //PUT to cloudinary
 router.post("/api/edit-listings/:id", (req, res) => {
@@ -128,39 +134,46 @@ router.post("/api/edit-listings/:id", (req, res) => {
   //Save the file inside cloudinary
   //Handles file upload
   let pictureURL;
+
   //Pass req parameter and Callback function for inputs and image file
-  form.parse(req, async (err, fields, files) => {
-    //Send Path through cloudinary it returns a url
-    cloudinary.uploader
-      .upload(files.upload.path, (result) => {
-        //The info about the image
-        // console.log(result);
-        pictureURL = result.secure_url;
-      })
-      .then(function () {
-        //Then create a listing with information
-        db.Listing.update(
-          {
-            name: fields.name,
-            price: fields.price,
-            quantity: fields.quantity,
-            // category: fields.category,
-            url: pictureURL || req.body.url,
+  form.parse(req, (err, fields, files) => {
+    let filePromise = new Promise((resolve, reject) => {
+      let file = files.upload;
+      if (file) {
+        cloudinary.uploader.upload(files.upload.path, (result) => {
+          resolve(result.secure_url);
+        });
+      } else {
+        resolve(pictureURL);
+      }
+    });
+
+    filePromise.then((url) => {
+      db.Listing.update(
+        {
+          name: fields.name,
+          price: fields.price,
+          quantity: fields.quantity,
+          category: fields.category,
+          url: url,
+        },
+        {
+          where: {
+            id: req.params.id,
           },
-          {
-            where: {
-              id: req.params.id
-            }
-          }
-        )
-          .then(function (listing) {
-            console.log("Whats this");
-            res.send(listing);
-          })
-          .catch(function (err) {
-            console.log(err);
-          });
-      });
+        }
+      )
+        .then(function () {
+          res.redirect("/profile");
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    });
+
+    //Send Path through cloudinary it returns a url
+
+    console.log(pictureURL);
   });
 });
 
@@ -188,9 +201,9 @@ router.delete("/api/listings/:id", function (req, res) {
 router.get("/api/category/:category", function (req, res) {
   db.Listing.findAll({
     where: {
-      category: req.params.category
+      category: req.params.category,
     },
-    include: [db.User]
+    include: [db.User],
   }).then(function (dbListing) {
     res.json(dbListing);
   });

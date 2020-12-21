@@ -37,6 +37,9 @@ router.get("/home", authenticated, function (req, res) {
 
 //Poop Route
 router.get("/add-listing", function (req, res) {
+  if (!req.user) {
+    res.redirect("/home");
+  }
   res.sendFile(path.join(__dirname, "../public/addListing.html"));
 });
 
