@@ -83,21 +83,6 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
-//POST to cart
-router.post("/api/cart-items", (req, res) => {
-  db.cartItem
-    .create({
-      name: req.body.name,
-      price: req.body.price,
-      category: req.body.category,
-      url: req.body.url,
-      UserId: req.user.id,
-    })
-    .then((cartItem) => {
-      res.send("Youre Item was added to your Cart");
-    });
-});
-
 //Post to cloudinary
 router.post("/api/listings", (req, res) => {
   //Init Form
@@ -106,7 +91,7 @@ router.post("/api/listings", (req, res) => {
   //Handles file upload
   let pictureURL;
   //Pass req parameter and Callback function for inputs and image file
-  form.parse(req, async (err, fields, files) => {
+  form.parse(req, (err, fields, files) => {
     //Send Path through cloudinary it returns a url
     cloudinary.uploader
       .upload(files.upload.path, (result) => {
@@ -216,4 +201,33 @@ router.get("/api/category/:category", function (req, res) {
   });
 });
 
+//POST to cart
+router.post("/api/cart-items", (req, res) => {
+  db.cartItem
+    .create({
+      name: req.body.name,
+      price: req.body.price,
+      category: req.body.category,
+      url: req.body.url,
+      UserId: req.user.id,
+    })
+    .then((cartItem) => {
+      res.send("Youre Item was added to your Cart");
+    });
+});
+
+//DELETE from cart
+router.delete("/api/cart-items/:id", function (req, res) {
+  db.cartItem
+    .destroy({
+      where: {
+        id: req.params.id,
+      },
+    })
+    .then(function (dbItem) {
+      res.json(dbItem);
+    });
+});
+
+//UPDATE Cart
 module.exports = router;
