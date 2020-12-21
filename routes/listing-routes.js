@@ -177,18 +177,16 @@ router.post("/api/edit-listings/:id", (req, res) => {
   });
 });
 
-// router.put("/api/listings/:id", function (req, res) {
-//   console.log("yo");
-
-//   db.Listing.update(req.body, {
-//     where: {
-//       id: req.params.id,
-//     },
-//   }).then(function (dbListing) {
-//     console.log(dbListing);
-//     res.json(dbListing);
-//   });
-// });
+router.put("/api/listings/:id", function (req, res) {
+  db.Listing.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  }).then(function (dbListing) {
+    console.log(dbListing);
+    res.json(dbListing);
+  });
+});
 
 router.delete("/api/listings/:id", function (req, res) {
   db.Listing.destroy({
