@@ -123,9 +123,6 @@ span {
   margin-left: 10px;
 }
 
-#signin {
-  /* margin-left: 20px; */
-}
 
 .username,
 .email,
@@ -136,7 +133,7 @@ span {
 }
 
 #signUpTitle {
-  margin-left: -20px;
+  /* margin-left: -20px; */
 }
 
 .main-content {
