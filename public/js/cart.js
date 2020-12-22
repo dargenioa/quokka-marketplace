@@ -62,7 +62,7 @@ $(document).ready(function () {
     setTimeout(function () {
       alert("Hello");
 
-      $(".buy-item").text("Purchased");
+      $(this).text("Purchased");
 
     }, 3000);
   
