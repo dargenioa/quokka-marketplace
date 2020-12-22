@@ -44,45 +44,36 @@ $(document).ready(function () {
   //Buy Button
 
   $(document).on("click", ".buy-item", function () {
-    let id = $(this).data("listing");
+    let idListing = $(this).data("listing");
+    let id = $(this).data("id");
     let quantity = $(this).data("quantity");
     let newQuantity = parseInt(quantity);
     newQuantity--
 
     console.log(quantity);
 
-    $.ajax("/api/listings/" + id, {
+    $.ajax("/api/listings/" + idListing, {
       type: "PUT",
       data: {
         quantity: newQuantity
       },
     }).then(console.log("success"));
-    
-    //   function () {
-    //   location.reload();
-    //   getCart();
-    // });
 
-    // if (newQuantity === 0) {
-    //   $(this).text("Out of Stock");
-    // } else {
+    setTimeout(function () {
+      alert("Hello");
 
-    //   newQuantity--;
-
-    //   $.ajax("/api/listings/" + id, {
-    //     type: "PUT",
-    //     data: {
-    //       quantity: newQuantity,
-    //     },
-
-    //   }).then(function () {
-    //     window.location.reload();
-    //   });
-    // }
-
-
- 
+    $.ajax({
+      method: "DELETE",
+      url: "/api/cart-items/" + id,
+    }).then(function () {
+      location.reload();
+      getCart();
+    });
+    }, 3000);
+  
   });
+
+
   getCart();
 });
 
