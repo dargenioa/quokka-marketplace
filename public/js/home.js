@@ -1,4 +1,16 @@
 $(document).ready(function () {
+  var popOverSettings = {
+    placement: 'right',
+    container: 'body',
+    html: true,
+    selector: '[rel="popover"]', //Sepcify the selector here
+    content: function () {
+        return $('[data-content]').data("content");
+    }
+}
+  
+  $('body').popover(popOverSettings);
+
   //Inital Table Generation
 
   const generateListingTable = (data) => {
@@ -13,11 +25,11 @@ $(document).ready(function () {
         if (currentUser.Listings[j].quantity === 0) {
           button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" class="btn btn-success">Out of Stock</button>`;
         } else {
-          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity"${currentUser.Listings[j].quantity}" class="btn btn-success">Add to Cart</button>`;
+          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity"${currentUser.Listings[j].quantity}" rel="popover" data-toggle="popover" data-content="Item added to cart!" class="btn btn-success">Add to Cart</button>`;
         }
         let listing = `<tr>
                 <td>${currentUser.Listings[j].name}</td>
-                <td><img class='listingThumbnail' src = '${currentUser.Listings[j].url}'/></td>
+                <td><img class='listingThumbnail' src = '${currentUser.Listings[j].url}'/></td
                 <td>$${currentUser.Listings[j].price}</td>
                 <td>${currentUser.Listings[j].quantity}</td>
                 <td>${currentUser.Listings[j].category}</td>
@@ -35,7 +47,7 @@ $(document).ready(function () {
 
   const sortListings = (results) => {
     $("#tableBody").empty();
-
+  
     for (let j = 0; j < results.length; j++) {
       let date = new Date(results[j].createdAt).toDateString();
       let button;
@@ -87,28 +99,29 @@ $(document).ready(function () {
   $(document).on("click", ".btn-success", function () {
     let id = $(this).data("id");
     // let newQuantity = $(this).data("quantity");
-    
-      let getListingPromise = (id) => {
-        return new Promise((resolve, reject) => {
-          $.get("/api/listings/" + id).then((data) => {
-            let cart = {
-              name: data.name,
-              price: data.price,
-              category: data.category,
-              url: data.url,
-              ListingId: data.id,
-              ListingQuantity: data.quantity
-            };
-            console.log(cart);
-            resolve(cart);
-          });
-        });
-      };
-  
-      getListingPromise(id).then((data) => {
-        $.post("/api/cart-items/", data).then(() => {
-          console.log("Success");
+    $(this).popover();
+
+    let getListingPromise = (id) => {
+      return new Promise((resolve, reject) => {
+        $.get("/api/listings/" + id).then((data) => {
+          let cart = {
+            name: data.name,
+            price: data.price,
+            category: data.category,
+            url: data.url,
+            ListingId: data.id,
+            ListingQuantity: data.quantity
+          };
+          console.log(cart);
+          resolve(cart);
         });
       });
+    };
+
+    getListingPromise(id).then((data) => {
+      $.post("/api/cart-items/", data).then(() => {
+        console.log("Success");
+      });
+    });
   });
 });
