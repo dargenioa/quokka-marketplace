@@ -3,7 +3,7 @@ $(document).ready(function () {
   let getCart = () => {
     $.get("/api/user").then(function (data) {
       //Checks for cart Items
-      if (!data.length) {
+      if (!data.cartItems.length) {
         $("#tableDiv").text("You have no items in your cart.");
       }
       //Loop through Items
@@ -11,7 +11,7 @@ $(document).ready(function () {
         let rowIndex = i + 1;
         let date = new Date(data.cartItems[i].createdAt).toDateString();
         let cartItem = `<tr>
-            <th scope="row">${rowIndex}</th>
+            <td scope="row">${rowIndex}</td>
             <td>${data.cartItems[i].name}</td>
             <td><img class='listingThumbnail' src = '${data.cartItems[i].url}'/></td>
             <td>$${data.cartItems[i].price}</td>

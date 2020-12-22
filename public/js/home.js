@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  //Popover
   var popOverSettings = {
     placement: 'right',
     container: 'body',
@@ -22,7 +23,7 @@ $(document).ready(function () {
         let date = new Date(currentUser.Listings[j].createdAt).toDateString();
         let button;
 
-        if (currentUser.Listings[j].quantity === 0) {
+        if (currentUser.Listings[j].quantity < 1) {
           button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" class="btn btn-success">Out of Stock</button>`;
         } else {
           button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity"${currentUser.Listings[j].quantity}" rel="popover" data-toggle="popover" data-content="Item added to cart!" class="btn btn-success">Add to Cart</button>`;
