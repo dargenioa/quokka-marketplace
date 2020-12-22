@@ -24,13 +24,16 @@ $(document).ready(function () {
         let button;
 
         if (currentUser.Listings[j].quantity < 1) {
-          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" class="btn btn-success">Out of Stock</button>`;
+          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" 
+          class="disabled btn btn-danger">Out of Stock</button>`;
+
         } else {
-          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity"${currentUser.Listings[j].quantity}" class="btn btn-success">Add to Cart</button>`;
+          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" 
+          class="btn btn-success">Add to Cart</button>`;
         }
         let listing = `<tr>
                 <td>${currentUser.Listings[j].name}</td>
-                <td><img class='listingThumbnail' src = '${currentUser.Listings[j].url}'/></td
+                <td><img class='listingThumbnail' src = '${currentUser.Listings[j].url}'/></td>
                 <td>$${currentUser.Listings[j].price}</td>
                 <td>${currentUser.Listings[j].quantity}</td>
                 <td>${currentUser.Listings[j].category}</td>
@@ -54,9 +57,9 @@ $(document).ready(function () {
       let button;
 
       if (results[j].quantity === 0) {
-        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="btn-danger">Out of Stock</button>`;
+        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="disabled btn-danger">Out of Stock</button>`;
       } else {
-        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class=" btn btn-success">Add to Cart</button>`;
+        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="btn btn-success">Add to Cart</button>`;
       }
 
       let listing = `<tr>
