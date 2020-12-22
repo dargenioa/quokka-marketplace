@@ -185,6 +185,7 @@ router.delete("/api/listings/:id", function (req, res) {
     where: {
       id: req.params.id,
     },
+    include: [db.cartItem],
   }).then(function (dbListing) {
     res.json(dbListing);
   });
@@ -209,6 +210,7 @@ router.post("/api/cart-items", (req, res) => {
       price: req.body.price,
       category: req.body.category,
       url: req.body.url,
+      ListingId: req.body.ListingId,
       UserId: req.user.id,
     })
     .then((cartItem) => {

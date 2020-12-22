@@ -14,6 +14,7 @@ $(document).ready(function () {
       username: username.val().trim(),
       phoneNumber: phoneNumber.val().trim(),
     };
+    
     $.ajax({
       method: "PUT",
       url: "/api/user",

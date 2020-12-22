@@ -14,11 +14,12 @@ $(document).ready(function () {
             <td>${data.cartItems[i].name}</td>
             <td><img class='listingThumbnail' src = '${data.cartItems[i].url}'/></td>
             <td>$${data.cartItems[i].price}</td>
-            <td>${data.cartItems[i].quantity}</td>
             <td>${data.cartItems[i].category}</td>
             <td>${date}</td>
-            <td><button type ="button" class = "edit-item btn btn-warning" data-id="${data.cartItems[i].id}">Edit</button></td>
-            <td><button type="button" class="delete-item btn btn-danger" data-id="${data.cartItems[i].id}">Delete</button></td>
+            <td><button type ="button" class = "buy-item btn btn-warning" data-id="${data.cartItems[i].id}" 
+            data-listing="${data.cartItems[i].ListingId}" data-quantity="${data.cartItems[i].ListingQuantity}">Buy</button></td>
+            <td><button type="button" class="delete-item btn btn-danger" data-id="${data.cartItems[i].id}"
+            data-listing="${data.cartItems[i].ListingId}" data-quantity="${data.cartItems[i].ListingQuantity}">Delete</button></td>
         </tr>`;
 
         $("#tableBody").append(cartItem);
@@ -34,10 +35,50 @@ $(document).ready(function () {
       method: "DELETE",
       url: "/api/cart-items/" + id,
     }).then(function () {
+<<<<<<< HEAD
       // console.log("deleted");
+=======
+>>>>>>> e412f8541f98ad90f73a4407dceb380ca33d5ccf
       location.reload();
       getCart();
     });
   });
+
+  //Buy Button
+
+  $(document).on("click", ".buy-item", function () {
+    let idListing = $(this).data("listing");
+    let id = $(this).data("id");
+
+    let listingQuantity;
+    $.get("/api/listings/" + idListing, function (data) {
+      listingQuantity = data.quantity;
+    })
+      .then(() => {
+        listingQuantity--;
+        $.ajax("/api/listings/" + idListing, {
+          type: "PUT",
+          data: {
+            quantity: listingQuantity,
+          },
+        }).then(console.log("success"));
+
+        setTimeout(function () {
+          alert("Hello");
+
+          $(this).text("Purchased");
+        }, 3000);
+      })
+      .then(() => {
+        $.ajax({
+          method: "DELETE",
+          url: "/api/cart-items/" + id,
+        }).then(function () {
+          location.reload();
+          getCart();
+        });
+      });
+  });
+
   getCart();
 });

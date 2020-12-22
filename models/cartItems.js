@@ -35,6 +35,11 @@ module.exports = function (sequelize, DataTypes) {
     cartItem.belongsTo(models.User, {
       foreignKey: "UserId",
     });
+
+    cartItem.belongsTo(models.Listing, {
+      foreignKey: "ListingId",
+      onDelete: "cascade",
+    });
   };
 
   return cartItem;
