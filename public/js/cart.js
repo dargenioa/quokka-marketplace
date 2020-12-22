@@ -57,6 +57,7 @@ $(document).ready(function () {
         quantity: newQuantity
       },
     }).then(console.log("success"));
+    
     //   function () {
     //   location.reload();
     //   getCart();
