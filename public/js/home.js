@@ -43,7 +43,7 @@ $(document).ready(function () {
       if (results[j].quantity === 0) {
         button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="btn-danger">Out of Stock</button>`;
       } else {
-        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="cart btn btn-success">Add to Cart</button>`;
+        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class=" btn btn-success">Add to Cart</button>`;
       }
 
       let listing = `<tr>
@@ -67,7 +67,7 @@ $(document).ready(function () {
     type: "GET",
   }).then(generateListingTable);
 
-  $(".cat").on("click", function () {
+  $(".dropdown-item").on("click", function () {
     let item = $(this).data("cat");
     console.log(item);
 
