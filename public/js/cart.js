@@ -3,7 +3,7 @@ $(document).ready(function () {
   let getCart = () => {
     $.get("/api/user").then(function (data) {
       //Checks for cart Items
-      if (!data.cartItems) {
+      if (!data.length) {
         $("#tableDiv").text("You have no items in your cart.");
       }
       //Loop through Items
