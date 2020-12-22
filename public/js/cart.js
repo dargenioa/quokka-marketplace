@@ -62,13 +62,8 @@ $(document).ready(function () {
     setTimeout(function () {
       alert("Hello");
 
-    $.ajax({
-      method: "DELETE",
-      url: "/api/cart-items/" + id,
-    }).then(function () {
-      location.reload();
-      getCart();
-    });
+      $(".buy-item").text("Purchased");
+
     }, 3000);
   
   });
