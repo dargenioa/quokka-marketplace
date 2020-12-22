@@ -16,6 +16,9 @@ module.exports = function (sequelize, DataTypes) {
       quantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        validate: {
+          min: 0,
+        },
       },
       category: {
         type: DataTypes.STRING,
@@ -44,15 +47,11 @@ module.exports = function (sequelize, DataTypes) {
     Listing.belongsTo(models.User, {
       foreignKey: "UserId",
     });
+    Listing.hasMany(models.cartItem, {
+      foreignKey: "ListingId",
+      onDelete: "cascade",
+    });
   };
-
-  // Listing.associate = function (models) {
-  //   // We're saying that a listing should belong to a User
-  //   // A listing can't be created without a User due to the foreign key constraint
-  //   Listing.belongsTo(models.User, {
-  //     foreignKey: "UserId",
-  //   });
-  // };
 
   return Listing;
 };
