@@ -14,7 +14,6 @@ $(document).ready(function () {
             <td>${data.cartItems[i].name}</td>
             <td><img class='listingThumbnail' src = '${data.cartItems[i].url}'/></td>
             <td>$${data.cartItems[i].price}</td>
-            <td>${data.cartItems[i].quantity}</td>
             <td>${data.cartItems[i].category}</td>
             <td>${date}</td>
             <td><button type ="button" class = "edit-item btn btn-warning" data-id="${data.cartItems[i].id}">Edit</button></td>

@@ -25,6 +25,10 @@ module.exports = function (sequelize, DataTypes) {
       url: {
         type: DataTypes.STRING,
       },
+
+      ListingId: {
+        type: DataTypes.STRING,
+      }
     },
     {
       freezeTableName: true,
