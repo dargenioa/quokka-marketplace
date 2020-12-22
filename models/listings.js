@@ -17,7 +17,7 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
-          min: 0
+          min: 0,
         },
       },
       category: {
@@ -47,8 +47,11 @@ module.exports = function (sequelize, DataTypes) {
     Listing.belongsTo(models.User, {
       foreignKey: "UserId",
     });
+    Listing.hasMany(models.cartItem, {
+      foreignKey: "ListingId",
+      onDelete: "cascade",
+    });
   };
-
 
   return Listing;
 };

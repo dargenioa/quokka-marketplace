@@ -87,28 +87,27 @@ $(document).ready(function () {
   $(document).on("click", ".btn-success", function () {
     let id = $(this).data("id");
     // let newQuantity = $(this).data("quantity");
-    
-      let getListingPromise = (id) => {
-        return new Promise((resolve, reject) => {
-          $.get("/api/listings/" + id).then((data) => {
-            let cart = {
-              name: data.name,
-              price: data.price,
-              category: data.category,
-              url: data.url,
-              ListingId: data.id,
-              ListingQuantity: data.quantity
-            };
-            console.log(cart);
-            resolve(cart);
-          });
-        });
-      };
-  
-      getListingPromise(id).then((data) => {
-        $.post("/api/cart-items/", data).then(() => {
-          console.log("Success");
+
+    let getListingPromise = (id) => {
+      return new Promise((resolve, reject) => {
+        $.get("/api/listings/" + id).then((data) => {
+          let cart = {
+            name: data.name,
+            price: data.price,
+            category: data.category,
+            url: data.url,
+            ListingId: data.id,
+          };
+          console.log(cart);
+          resolve(cart);
         });
       });
+    };
+
+    getListingPromise(id).then((data) => {
+      $.post("/api/cart-items/", data).then(() => {
+        console.log("Success");
+      });
+    });
   });
 });
