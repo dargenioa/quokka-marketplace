@@ -86,7 +86,7 @@ $(document).ready(function () {
 
   $(document).on("click", ".btn-success", function () {
     let id = $(this).data("id");
-    // let newQuantity = $(this).data("quantity");
+    
 
     let getListingPromise = (id) => {
       return new Promise((resolve, reject) => {
