@@ -1,16 +1,16 @@
 $(document).ready(function () {
   //Popover
-  var popOverSettings = {
-    placement: 'right',
-    container: 'body',
-    html: true,
-    selector: '[rel="popover"]', //Sepcify the selector here
-    content: function () {
-        return $('[data-content]').data("content");
-    }
-}
+//   var popOverSettings = {
+//     placement: 'right',
+//     container: 'body',
+//     html: true,
+//     selector: '[rel="popover"]', //Sepcify the selector here
+//     content: function () {
+//         return $('[data-content]').data("content");
+//     }
+// }
   
-  $('body').popover(popOverSettings);
+//   $('body').popover(popOverSettings);
 
   //Inital Table Generation
 
@@ -26,7 +26,7 @@ $(document).ready(function () {
         if (currentUser.Listings[j].quantity < 1) {
           button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" class="btn btn-success">Out of Stock</button>`;
         } else {
-          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity"${currentUser.Listings[j].quantity}" rel="popover" data-toggle="popover" data-content="Item added to cart!" class="btn btn-success">Add to Cart</button>`;
+          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity"${currentUser.Listings[j].quantity}" class="btn btn-success">Add to Cart</button>`;
         }
         let listing = `<tr>
                 <td>${currentUser.Listings[j].name}</td>
