@@ -5,13 +5,15 @@ $(document).ready(function () {
       if (!data.cartItems) {
         $("#tableDiv").text("You have no items in your cart.");
       }
+      let cartIndex = 0;
+      let purchaseIndex = 0;
       //Loop through Items
       for (i = 0; i < data.cartItems.length; i++) {
         if (data.cartItems[i].purchased) {
-          let rowIndex = i + 1;
+          purchaseIndex++;
           let date = new Date(data.cartItems[i].createdAt).toDateString();
           let cartItem = `<tr>
-            <th scope="row">${rowIndex}</th>
+            <th scope="row">${purchaseIndex}</th>
             <td>${data.cartItems[i].name}</td>
             <td><img class='listingThumbnail' src = '${data.cartItems[i].url}'/></td>
             <td>$${data.cartItems[i].price}</td>
@@ -24,10 +26,10 @@ $(document).ready(function () {
 
           $("#purchaseTBody").append(cartItem);
         } else {
-          let rowIndex = i + 1;
+          cartIndex++;
           let date = new Date(data.cartItems[i].createdAt).toDateString();
           let cartItem = `<tr>
-            <th scope="row">${rowIndex}</th>
+            <th scope="row">${cartIndex}</th>
             <td>${data.cartItems[i].name}</td>
             <td><img class='listingThumbnail' src = '${data.cartItems[i].url}'/></td>
             <td>$${data.cartItems[i].price}</td>
