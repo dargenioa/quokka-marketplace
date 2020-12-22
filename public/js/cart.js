@@ -14,11 +14,12 @@ $(document).ready(function () {
             <td>${data.cartItems[i].name}</td>
             <td><img class='listingThumbnail' src = '${data.cartItems[i].url}'/></td>
             <td>$${data.cartItems[i].price}</td>
-            <td>${data.cartItems[i].quantity}</td>
             <td>${data.cartItems[i].category}</td>
             <td>${date}</td>
-            <td><button type ="button" class = "edit-item btn btn-warning" data-id="${data.cartItems[i].id}">Edit</button></td>
-            <td><button type="button" class="delete-item btn btn-danger" data-id="${data.cartItems[i].id}">Delete</button></td>
+            <td><button type ="button" class = "buy-item btn btn-warning" data-id="${data.cartItems[i].id}" 
+            data-listing="${data.cartItems[i].ListingId}" data-quantity="${data.cartItems[i].ListingQuantity}">Buy</button></td>
+            <td><button type="button" class="delete-item btn btn-danger" data-id="${data.cartItems[i].id}"
+            data-listing="${data.cartItems[i].ListingId}" data-quantity="${data.cartItems[i].ListingQuantity}">Delete</button></td>
         </tr>`;
 
         $("#tableBody").append(cartItem);
@@ -34,9 +35,45 @@ $(document).ready(function () {
       method: "DELETE",
       url: "/api/cart-items/" + id,
     }).then(function () {
-      // console.log("deleted");
+      location.reload();
       getCart();
     });
   });
+
+
+  //Buy Button
+
+  $(document).on("click", ".buy-item", function () {
+    let idListing = $(this).data("listing");
+    let id = $(this).data("id");
+    let quantity = $(this).data("quantity");
+    let newQuantity = parseInt(quantity);
+    newQuantity--
+
+    console.log(quantity);
+
+    $.ajax("/api/listings/" + idListing, {
+      type: "PUT",
+      data: {
+        quantity: newQuantity
+      },
+    }).then(console.log("success"));
+
+    setTimeout(function () {
+      alert("Hello");
+
+    $.ajax({
+      method: "DELETE",
+      url: "/api/cart-items/" + id,
+    }).then(function () {
+      location.reload();
+      getCart();
+    });
+    }, 3000);
+  
+  });
+
+
   getCart();
 });
+

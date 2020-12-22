@@ -209,6 +209,8 @@ router.post("/api/cart-items", (req, res) => {
       price: req.body.price,
       category: req.body.category,
       url: req.body.url,
+      ListingId: req.body.ListingId,
+      ListingQuantity: req.body.ListingQuantity,
       UserId: req.user.id,
     })
     .then((cartItem) => {

@@ -13,7 +13,7 @@ $(document).ready(function () {
         if (currentUser.Listings[j].quantity === 0) {
           button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" class="btn btn-success">Out of Stock</button>`;
         } else {
-          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity"${currentUser.Listings[j].quantity}" class="btn btn-success">Purchase</button>`;
+          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity"${currentUser.Listings[j].quantity}" class="btn btn-success">Add to Cart</button>`;
         }
         let listing = `<tr>
                 <td>${currentUser.Listings[j].name}</td>
@@ -43,7 +43,7 @@ $(document).ready(function () {
       if (results[j].quantity === 0) {
         button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="btn btn-success">Out of Stock</button>`;
       } else {
-        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="btn btn-success">Purchase</button>`;
+        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="btn btn-success">Add to Cart</button>`;
       }
 
       let listing = `<tr>
@@ -86,41 +86,29 @@ $(document).ready(function () {
 
   $(document).on("click", ".btn-success", function () {
     let id = $(this).data("id");
-    let newQuantity = $(this).data("quantity");
-    let getListingPromise = (id) => {
-      return new Promise((resolve, reject) => {
-        $.get("/api/listings/" + id).then((data) => {
-          let cart = {
-            name: data.name,
-            price: data.price,
-            category: data.category,
-            url: data.url,
-          };
-          console.log(cart);
-          resolve(cart);
+    // let newQuantity = $(this).data("quantity");
+    
+      let getListingPromise = (id) => {
+        return new Promise((resolve, reject) => {
+          $.get("/api/listings/" + id).then((data) => {
+            let cart = {
+              name: data.name,
+              price: data.price,
+              category: data.category,
+              url: data.url,
+              ListingId: data.id,
+              ListingQuantity: data.quantity
+            };
+            console.log(cart);
+            resolve(cart);
+          });
+        });
+      };
+  
+      getListingPromise(id).then((data) => {
+        $.post("/api/cart-items/", data).then(() => {
+          console.log("Success");
         });
       });
-    };
-
-    getListingPromise(id).then((data) => {
-      $.post("/api/cart-items/", data).then(() => {
-        console.log("Success");
-      });
-    });
-    if (newQuantity === 0) {
-      $(this).text("Out of Stock");
-      window.location.reload();
-    } else {
-      newQuantity--;
-
-      $.ajax("/api/listings/" + id, {
-        type: "PUT",
-        data: {
-          quantity: newQuantity,
-        },
-      }).then(function () {
-        window.location.reload();
-      });
-    }
   });
 });
