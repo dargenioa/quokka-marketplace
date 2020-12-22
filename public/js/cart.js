@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  $("#purchasedTable").hide();
 
   let getCart = () => {
     $.get("/api/user").then(function (data) {
@@ -11,6 +12,7 @@ $(document).ready(function () {
       //Loop through Items
       for (i = 0; i < data.cartItems.length; i++) {
         if (data.cartItems[i].purchased) {
+          $("#purchasedTable").show();
           purchaseIndex++;
           let date = new Date(data.cartItems[i].createdAt).toDateString();
           let cartItem = `<tr>

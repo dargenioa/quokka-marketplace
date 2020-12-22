@@ -1,16 +1,16 @@
 $(document).ready(function () {
   //Popover
-//   var popOverSettings = {
-//     placement: 'right',
-//     container: 'body',
-//     html: true,
-//     selector: '[rel="popover"]', //Sepcify the selector here
-//     content: function () {
-//         return $('[data-content]').data("content");
-//     }
-// }
-  
-//   $('body').popover(popOverSettings);
+  var popOverSettings = {
+    placement: 'right',
+    container: 'body',
+    html: true,
+    selector: '[rel="popover"]', //Sepcify the selector here
+    content: function () {
+        return $('[data-content]').data("content");
+    }
+}
+
+  $('body').popover(popOverSettings);
 
   //Inital Table Generation
 

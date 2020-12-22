@@ -233,7 +233,6 @@
                 <th scope="col">Date</th>
                 <th scope="col">User</th>
                 <th scope="col" id="purchaseCol"></th>
-                <th scope="col"></th>
               </tr>
             </thead>
 
@@ -405,15 +404,4 @@
   </script>
 
   <script src="js/home.js"></script>
-</body>
-
-      $.get("/api/user_data").then(function (data) {
-        if (data.id) {
-          accLink.text("Profile");
-          accLink.attr("href", "profile");
-        }
-      });
-    </script>
-    <script src="js/home.js"></script>
-  </body>
 </html>
