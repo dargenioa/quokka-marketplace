@@ -55,10 +55,7 @@ $(document).ready(function () {
       method: "DELETE",
       url: "/api/cart-items/" + id,
     }).then(function () {
-<<<<<<< HEAD
       // console.log("deleted");
-=======
->>>>>>> e412f8541f98ad90f73a4407dceb380ca33d5ccf
       location.reload();
       getCart();
     });
@@ -88,24 +85,12 @@ $(document).ready(function () {
         data: {
           quantity: listingQuantity,
         },
-      }).then(console.log("success"));
-
-      setTimeout(function () {
-        alert("Hello");
-
-        $(this).text("Purchased");
-      }, 3000);
-    });
-    // .then(() => {
-    //   $.ajax({
-    //     method: "DELETE",
-    //     url: "/api/cart-items/" + id,
-    //   }).then(function () {
-    //     location.reload();
-    //     getCart();
-    //   });
-    // });
+      }).then(setTimeout(() => {
+          alert("Thank you for your purchase!");
+          window.location.href = "/cart";
+      }, 1000)
+    );
   });
-
-  getCart();
+});
+getCart();
 });
