@@ -1,6 +1,7 @@
 $(document).ready(function () {
   //Popover
   var popOverSettings = {
+<<<<<<< HEAD
     placement: 'right',
     container: 'body',
     html: true,
@@ -11,6 +12,21 @@ $(document).ready(function () {
 }
 
   $('body').popover(popOverSettings);
+=======
+    placement: "right",
+    container: "body",
+    html: true,
+    delay: {
+      hide: 1000,
+    },
+    selector: '[rel="popover"]', //Sepcify the selector here
+    content: function () {
+      return $("[data-content]").data("content");
+    },
+  };
+
+  $("body").popover(popOverSettings);
+>>>>>>> 9435ae46a9acbff4daca7d2e116d0b2a8be33de5
 
   //Inital Table Generation
 
@@ -26,10 +42,9 @@ $(document).ready(function () {
         if (currentUser.Listings[j].quantity < 1) {
           button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" 
           class="disabled btn btn-danger">Out of Stock</button>`;
-
         } else {
           button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" 
-          class="btn btn-success">Add to Cart</button>`;
+          class="btn btn-success" data-placement="right" data-toggle="popover" rel="popover" data-content="Item added to cart">Add to Cart</button>`;
         }
         let listing = `<tr>
                 <td>${currentUser.Listings[j].name}</td>
@@ -51,7 +66,7 @@ $(document).ready(function () {
 
   const sortListings = (results) => {
     $("#tableBody").empty();
-  
+
     for (let j = 0; j < results.length; j++) {
       let date = new Date(results[j].createdAt).toDateString();
       let button;
@@ -102,7 +117,12 @@ $(document).ready(function () {
 
   $(document).on("click", ".btn-success", function () {
     let id = $(this).data("id");
-    // let newQuantity = $(this).data("quantity");
+    
+    $(this).on("shown.bs.popover", function () {
+      setTimeout(function () {
+        $("[rel='popover']").popover("hide");
+      }, 1000);
+    });
 
     let getListingPromise = (id) => {
       return new Promise((resolve, reject) => {
@@ -114,7 +134,7 @@ $(document).ready(function () {
             url: data.url,
             ListingId: data.id,
           };
-          console.log(cart);
+
           resolve(cart);
         });
       });

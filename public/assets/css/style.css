@@ -49,6 +49,14 @@ h6 {
   margin-top: 50px;
 }
 
+.table-responsive {
+  padding: 40px;
+  overflow: auto;
+
+
+}
+
+
 h5 {
   font-size: 50px;
   font-weight: bold;
@@ -72,6 +80,7 @@ h5 {
   padding-left: 15%;
   margin-bottom: 30px;
   margin-top: 40px;
+  position: relative;
 }
 
 .container1,
@@ -187,9 +196,9 @@ h3 {
   margin-top: 10%;
   box-shadow: 0 0 20px #000000b3;
   padding: 30px;
-  height: 40vh;
+  height: 52vh;
   margin-bottom: 100px;
-  width: 70%;
+  width: 85%;
 }
 
 #whyQuokka {

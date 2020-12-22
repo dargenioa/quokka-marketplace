@@ -1,6 +1,8 @@
 $(document).ready(function () {
   $("#purchasedTable").hide();
 
+  $("#purchaseTable").hide();
+
   let getCart = () => {
     $.get("/api/user").then(function (data) {
       //Checks for cart Items
@@ -14,6 +16,7 @@ $(document).ready(function () {
         if (data.cartItems[i].purchased) {
           $("#purchasedTable").show();
           purchaseIndex++;
+          $("#purchaseTable").show();
           let date = new Date(data.cartItems[i].createdAt).toDateString();
           let cartItem = `<tr>
             <th scope="row">${purchaseIndex}</th>
@@ -22,7 +25,7 @@ $(document).ready(function () {
             <td>$${data.cartItems[i].price}</td>
             <td>${data.cartItems[i].category}</td>
             <td>${date}</td>
-            
+            <td><button type ="button" class = "disabled btn btn-success">Purchased!</button></td>
             <td><button type="button" class="delete-item btn btn-danger" data-id="${data.cartItems[i].id}"
             data-listing="${data.cartItems[i].ListingId}" data-quantity="${data.cartItems[i].ListingQuantity}">Delete</button></td>
         </tr>`;
@@ -44,6 +47,7 @@ $(document).ready(function () {
         </tr>`;
 
           $("#tableBody").append(cartItem);
+          
         }
       }
     });
@@ -91,7 +95,6 @@ $(document).ready(function () {
           quantity: listingQuantity,
         },
       }).then(setTimeout(() => {
-          alert("Thank you for your purchase!");
           window.location.href = "/cart";
       }, 1000)
     );

@@ -44,7 +44,6 @@ $(document).ready(function () {
             //         <td>$${item.price}</td>
             //         <td>${item.quantity}</td>
             //         <td>${item.category}</td>
-            //         <td><button type="button" class="btn btn-success">Purchase</button></td>
             //     </tr>`
         });
 
