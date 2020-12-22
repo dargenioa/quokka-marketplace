@@ -1,4 +1,17 @@
 $(document).ready(function () {
+  //Popover
+//   var popOverSettings = {
+//     placement: 'right',
+//     container: 'body',
+//     html: true,
+//     selector: '[rel="popover"]', //Sepcify the selector here
+//     content: function () {
+//         return $('[data-content]').data("content");
+//     }
+// }
+  
+//   $('body').popover(popOverSettings);
+
   //Inital Table Generation
 
   const generateListingTable = (data) => {
@@ -10,10 +23,13 @@ $(document).ready(function () {
         let date = new Date(currentUser.Listings[j].createdAt).toDateString();
         let button;
 
-        if (currentUser.Listings[j].quantity === 0) {
-          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" class="btn-danger">Out of Stock</button>`;
+        if (currentUser.Listings[j].quantity < 1) {
+          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" 
+          class="disabled btn btn-danger">Out of Stock</button>`;
+
         } else {
-          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity"${currentUser.Listings[j].quantity}" class="btn btn-success">Add to Cart</button>`;
+          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" 
+          class="btn btn-success">Add to Cart</button>`;
         }
         let listing = `<tr>
                 <td>${currentUser.Listings[j].name}</td>
@@ -35,15 +51,15 @@ $(document).ready(function () {
 
   const sortListings = (results) => {
     $("#tableBody").empty();
-
+  
     for (let j = 0; j < results.length; j++) {
       let date = new Date(results[j].createdAt).toDateString();
       let button;
 
       if (results[j].quantity === 0) {
-        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="btn-danger">Out of Stock</button>`;
+        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="disabled btn-danger">Out of Stock</button>`;
       } else {
-        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class=" btn btn-success">Add to Cart</button>`;
+        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="btn btn-success">Add to Cart</button>`;
       }
 
       let listing = `<tr>

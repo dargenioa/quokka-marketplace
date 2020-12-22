@@ -1,8 +1,9 @@
 $(document).ready(function () {
+
   let getCart = () => {
     $.get("/api/user").then(function (data) {
       //Checks for cart Items
-      if (!data.cartItems) {
+      if (!data.cartItems.length) {
         $("#tableDiv").text("You have no items in your cart.");
       }
       let cartIndex = 0;
@@ -34,9 +35,8 @@ $(document).ready(function () {
             <td><img class='listingThumbnail' src = '${data.cartItems[i].url}'/></td>
             <td>$${data.cartItems[i].price}</td>
             <td>${data.cartItems[i].category}</td>
-            <td>${date}</td>
-            <td><button type ="button" class = "buy-item btn btn-warning" data-id="${data.cartItems[i].id}" 
-            data-listing="${data.cartItems[i].ListingId}" data-quantity="${data.cartItems[i].ListingQuantity}">Buy</button></td>
+            <td>${date}</td>     
+            <td><button type ="button" class = "buy-item btn btn-warning" data-id="${data.cartItems[i].id}" data-listing="${data.cartItems[i].ListingId}" data-quantity="${data.cartItems[i].ListingQuantity}">Buy</button></td>
             <td><button type="button" class="delete-item btn btn-danger" data-id="${data.cartItems[i].id}"
             data-listing="${data.cartItems[i].ListingId}" data-quantity="${data.cartItems[i].ListingQuantity}">Delete</button></td>
         </tr>`;
@@ -62,8 +62,11 @@ $(document).ready(function () {
   });
 
   //Buy Button
-
   $(document).on("click", ".buy-item", function () {
+    $(this).text("Purchased!");
+    $(this).addClass("disabled");
+    $(this).addClass("btn-success").removeClass("btn-warning");
+
     let idListing = $(this).data("listing");
     let id = $(this).data("id");
     $.ajax("/api/cart-items/" + id, {
