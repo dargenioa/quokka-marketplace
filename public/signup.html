@@ -1,106 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
-    />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Lobster&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule=""
-      src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"
-    ></script>
-    <!------------------------- Css Link  ------------------------->
 
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <title>Login</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Lobster&display=swap"
+    rel="stylesheet" />
+  <script type="module" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule="" src="https://unpkg.com/ionicons@5.2.3/dist/ionicons/ionicons.js"></script>
+  <!------------------------- Css Link  ------------------------->
 
-  <body>
-    <header>
-      <!------------------------- Navbr ------------------------->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>Login</title>
+</head>
 
-      <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" id="brandname" href="index.html"
-            >Quokka Marketplace</a
-          >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="sell.html"
-                  >Sell with Us</a
-                >
-              </li>
+<body>
+  <header>
+    <!------------------------- Navbr ------------------------->
 
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Products
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a class="dropdown-item" href="#">Mobiles & Tablets</a>
-                  </li>
-                  <li><a class="dropdown-item" href="#">TVs</a></li>
-                  <li><a class="dropdown-item" href="#">Appliance</a></li>
-                  <li><a class="dropdown-item" href="#">Home & Kitchen</a></li>
-                  <li><a class="dropdown-item" href="#">Health & Beauty</a></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex" id="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search Products"
-                aria-label="Search"
-              />
-              <button type="submit" class="btn btn-primary">Search</button>
-            </form>
-            <!-- login -->
-            <a id="accountLink" class="link" href="login"> Login </a>
-            <a class="link" href="">
-              <ion-icon name="cart-outline"></ion-icon>
-            </a>
-          </div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" id="brandname" href="index.html">Quokka Marketplace</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="sell.html">Sell with Us</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Products
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <a class="dropdown-item" href="#">Mobiles & Tablets</a>
+                </li>
+                <li><a class="dropdown-item" href="#">TVs</a></li>
+                <li><a class="dropdown-item" href="#">Appliance</a></li>
+                <li><a class="dropdown-item" href="#">Home & Kitchen</a></li>
+                <li><a class="dropdown-item" href="#">Health & Beauty</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex" id="search">
+            <input class="form-control me-2" type="search" placeholder="Search Products" aria-label="Search" />
+            <button type="submit" class="btn btn-primary">Search</button>
+          </form>
+          <!-- login -->
+          <a id="accountLink" class="link" href="login"> Login </a>
+          <a class="link" href="">
+            <ion-icon name="cart-outline"></ion-icon>
+          </a>
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
+  </header>
 
-    <!------------------------- Login section ------------------------->
+  <!------------------------- Login section ------------------------->
 
-    <section class="row container-accTable">
-      <!-- <div class="container-log col-5">
+
+  <!-- <div class="container-log col-5">
         <h2>Log In</h2>
         <div class="login col-md-12">
           <div class="username">
@@ -127,134 +95,112 @@
         </button>
       </div> -->
 
-      <!------------------------- Sign Up ------------------------->
+  <!------------------------- Sign Up ------------------------->
 
-      <div class="col-12">
-        <h2 id="signUpTitle">Create a new account</h2>
-        <div class="col-md-12">
-          <div class="email">
-            <label for="email-input" class="form-label">Email address</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email-input"
-              placeholder=" Email"
-            />
+
+  <div class="main-content">
+    <section class="container-accTable">
+      <div class="container">
+        <div >
+          <h2 id="signUpTitle">Create a new account</h2>
+          <div>
+            <div class="email">
+              <label for="email-input" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email-input" placeholder=" Email" />
+            </div>
+            <div class="username">
+              <label for="inputUsername" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username-input" placeholder="Username" />
+            </div>
+            <div class="password">
+              <label for="inputPassword" class="form-label">Your Password</label>
+              <input type="password" class="form-control" id="password-input" placeholder="Password" />
+            </div>
+            <div class="phone">
+              <label for="inputPassword" class="form-label">Phone Number (Optional)</label>
+              <input class="form-control" id="phone-input" placeholder="Phone Number" />
+            </div>
+            <button id="signup-btn" class="btn btn-primary">Register</button>
           </div>
-          <div class="username">
-            <label for="inputUsername" class="form-label">Username</label>
-            <input
-              type="text"
-              class="form-control"
-              id="username-input"
-              placeholder="Username"
-            />
-          </div>
-          <div class="password">
-            <label for="inputPassword" class="form-label">Your Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password-input"
-              placeholder="Password"
-            />
-          </div>
-          <div class="phone">
-            <label for="inputPassword" class="form-label"
-              >Phone Number (Optional)</label
-            >
-            <input
-              class="form-control"
-              id="phone-input"
-              placeholder="Phone Number"
-            />
-          </div>
-          <button id="signup-btn" class="btn btn-primary">Register</button>
         </div>
       </div>
     </section>
+  </div>
 
-    <!------------------------- Footer ------------------------->
 
-    <footer class="container-footerLog col-12">
-      <div class="container">
-        <div class="row col-12">
-          <div class="col">
-            <ul>
-              <p>Get to know Us</p>
-              <li>Careers</li>
-              <li>Blog</li>
-              <li>About Quokka</li>
-              <li>Sustainability</li>
-              <li>Press Center</li>
-              <li>Investor Relations</li>
-              <li>Quokka Devices</li>
-              <li>Qoukka Tours</li>
-            </ul>
-          </div>
-          <div class="col">
-            <ul>
-              <p>Make Money with Us</p>
-              <li>Sell products on Qoukka</li>
-              <li>Sell apps on Qoukka</li>
-              <li>Become an Affiliate</li>
-              <li>Advertive You products</li>
-              <li>Self-Pulished with Us</li>
-              <li>Host an Qoukka Hub</li>
-            </ul>
-          </div>
-          <div class="col">
-            <ul>
-              <p>Qoukka Payment Products</p>
-              <li>Qoukka Rewards Visa</li>
-              <li>Qoukka.com Store Card</li>
-              <li>Qoukka Business Card</li>
-              <li>Qoukka Business Line of Credit</li>
-              <li>Shop with Points</li>
-              <li>Credit Card Marketplace</li>
-              <li>Reload Your Balance</li>
-              <li>Qoukka Currency Converter</li>
-            </ul>
-          </div>
-          <div class="col">
-            <ul>
-              <p>Let Us Help You</p>
-              <li>Qoukka and COVID 19</li>
-              <li>Your Account</li>
-              <li>Your Orders</li>
-              <li>Shipping Rates & Policies</li>
-              <li>Qoukka Prime</li>
-              <li>Returns & Replacements</li>
-              <li>Qoukka Assistant</li>
-              <li>Help</li>
-            </ul>
-          </div>
+  <!------------------------- Footer ------------------------->
+
+  <footer class="container-footerLog col-12">
+    <div class="container">
+      <div class="row col-12">
+        <div class="col">
+          <ul>
+            <p>Get to know Us</p>
+            <li>Careers</li>
+            <li>Blog</li>
+            <li>About Quokka</li>
+            <li>Sustainability</li>
+            <li>Press Center</li>
+            <li>Investor Relations</li>
+            <li>Quokka Devices</li>
+            <li>Qoukka Tours</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul>
+            <p>Make Money with Us</p>
+            <li>Sell products on Qoukka</li>
+            <li>Sell apps on Qoukka</li>
+            <li>Become an Affiliate</li>
+            <li>Advertive You products</li>
+            <li>Self-Pulished with Us</li>
+            <li>Host an Qoukka Hub</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul>
+            <p>Qoukka Payment Products</p>
+            <li>Qoukka Rewards Visa</li>
+            <li>Qoukka.com Store Card</li>
+            <li>Qoukka Business Card</li>
+            <li>Qoukka Business Line of Credit</li>
+            <li>Shop with Points</li>
+            <li>Credit Card Marketplace</li>
+            <li>Reload Your Balance</li>
+            <li>Qoukka Currency Converter</li>
+          </ul>
+        </div>
+        <div class="col">
+          <ul>
+            <p>Let Us Help You</p>
+            <li>Qoukka and COVID 19</li>
+            <li>Your Account</li>
+            <li>Your Orders</li>
+            <li>Shipping Rates & Policies</li>
+            <li>Qoukka Prime</li>
+            <li>Returns & Replacements</li>
+            <li>Qoukka Assistant</li>
+            <li>Help</li>
+          </ul>
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-    <!------------------------- Java Links  ------------------------->
+  <!------------------------- Java Links  ------------------------->
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-      integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-      integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
-      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
-      crossorigin="anonymous"
-    ></script>
-    <script src="./js/signup.js"></script>
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+    integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous"></script>
+  <script src="./js/signup.js"></script>
+</body>
+
 </html>

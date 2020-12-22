@@ -35,13 +35,28 @@ router.get("/home", authenticated, function (req, res) {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-//Poop Route
+//Cart Route
+router.get("/cart", function (req, res) {
+  if (!req.user) {
+    res.redirect("/login");
+  }
+  res.sendFile(path.join(__dirname, "../public/cart.html"));
+});
+
+//Add listing Route
 router.get("/add-listing", function (req, res) {
+  if (!req.user) {
+    res.redirect("/home");
+  }
   res.sendFile(path.join(__dirname, "../public/addListing.html"));
 });
 
 router.get("/profile", authenticated, function (req, res) {
   res.sendFile(path.join(__dirname, "../public/profile.html"));
+});
+
+router.get("/cart", authenticated, function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/cart.html"));
 });
 
 //Export router
