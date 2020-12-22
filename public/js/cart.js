@@ -7,9 +7,26 @@ $(document).ready(function () {
       }
       //Loop through Items
       for (i = 0; i < data.cartItems.length; i++) {
-        let rowIndex = i + 1;
-        let date = new Date(data.cartItems[i].createdAt).toDateString();
-        let cartItem = `<tr>
+        if (data.cartItems[i].purchased) {
+          let rowIndex = i + 1;
+          let date = new Date(data.cartItems[i].createdAt).toDateString();
+          let cartItem = `<tr>
+            <th scope="row">${rowIndex}</th>
+            <td>${data.cartItems[i].name}</td>
+            <td><img class='listingThumbnail' src = '${data.cartItems[i].url}'/></td>
+            <td>$${data.cartItems[i].price}</td>
+            <td>${data.cartItems[i].category}</td>
+            <td>${date}</td>
+            
+            <td><button type="button" class="delete-item btn btn-danger" data-id="${data.cartItems[i].id}"
+            data-listing="${data.cartItems[i].ListingId}" data-quantity="${data.cartItems[i].ListingQuantity}">Delete</button></td>
+        </tr>`;
+
+          $("#purchaseTBody").append(cartItem);
+        } else {
+          let rowIndex = i + 1;
+          let date = new Date(data.cartItems[i].createdAt).toDateString();
+          let cartItem = `<tr>
             <th scope="row">${rowIndex}</th>
             <td>${data.cartItems[i].name}</td>
             <td><img class='listingThumbnail' src = '${data.cartItems[i].url}'/></td>
@@ -22,7 +39,8 @@ $(document).ready(function () {
             data-listing="${data.cartItems[i].ListingId}" data-quantity="${data.cartItems[i].ListingQuantity}">Delete</button></td>
         </tr>`;
 
-        $("#tableBody").append(cartItem);
+          $("#tableBody").append(cartItem);
+        }
       }
     });
   };
@@ -45,35 +63,42 @@ $(document).ready(function () {
   $(document).on("click", ".buy-item", function () {
     let idListing = $(this).data("listing");
     let id = $(this).data("id");
+    $.ajax("/api/cart-items/" + id, {
+      type: "PUT",
+      data: {
+        purchased: true,
+      },
+    }).then((res) => {
+      console.log(res);
+    });
 
     let listingQuantity;
     $.get("/api/listings/" + idListing, function (data) {
       listingQuantity = data.quantity;
-    })
-      .then(() => {
-        listingQuantity--;
-        $.ajax("/api/listings/" + idListing, {
-          type: "PUT",
-          data: {
-            quantity: listingQuantity,
-          },
-        }).then(console.log("success"));
+    }).then(() => {
+      listingQuantity--;
+      $.ajax("/api/listings/" + idListing, {
+        type: "PUT",
+        data: {
+          quantity: listingQuantity,
+        },
+      }).then(console.log("success"));
 
-        setTimeout(function () {
-          alert("Hello");
+      setTimeout(function () {
+        alert("Hello");
 
-          $(this).text("Purchased");
-        }, 3000);
-      })
-      .then(() => {
-        $.ajax({
-          method: "DELETE",
-          url: "/api/cart-items/" + id,
-        }).then(function () {
-          location.reload();
-          getCart();
-        });
-      });
+        $(this).text("Purchased");
+      }, 3000);
+    });
+    // .then(() => {
+    //   $.ajax({
+    //     method: "DELETE",
+    //     url: "/api/cart-items/" + id,
+    //   }).then(function () {
+    //     location.reload();
+    //     getCart();
+    //   });
+    // });
   });
 
   getCart();

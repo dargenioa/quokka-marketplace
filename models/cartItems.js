@@ -21,7 +21,7 @@ module.exports = function (sequelize, DataTypes) {
           len: [1, 255],
         },
       },
-
+      purchased: { type: DataTypes.BOOLEAN, defaultValue: false },
       url: {
         type: DataTypes.STRING,
       },
