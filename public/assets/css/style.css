@@ -133,6 +133,10 @@ span {
   margin-bottom: 20px;
 }
 
+.disabled{
+  pointer-events: none;
+}
+
 .main-content {
   min-height: 70vh;
   background: #f1f1f1;
