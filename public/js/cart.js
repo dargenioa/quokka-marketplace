@@ -16,8 +16,10 @@ $(document).ready(function () {
             <td>$${data.cartItems[i].price}</td>
             <td>${data.cartItems[i].category}</td>
             <td>${date}</td>
-            <td><button type ="button" class = "edit-item btn btn-warning" data-id="${data.cartItems[i].id}">Edit</button></td>
-            <td><button type="button" class="delete-item btn btn-danger" data-id="${data.cartItems[i].id}">Delete</button></td>
+            <td><button type ="button" class = "buy-item btn btn-warning" data-id="${data.cartItems[i].id}" 
+            data-listing="${data.cartItems[i].ListingId}" data-quantity="${data.cartItems[i].ListingQuantity}">Buy</button></td>
+            <td><button type="button" class="delete-item btn btn-danger" data-id="${data.cartItems[i].id}"
+            data-listing="${data.cartItems[i].ListingId}" data-quantity="${data.cartItems[i].ListingQuantity}">Delete</button></td>
         </tr>`;
 
         $("#tableBody").append(cartItem);
@@ -37,5 +39,49 @@ $(document).ready(function () {
       getCart();
     });
   });
+
+
+  //Buy Button
+
+  $(document).on("click", ".buy-item", function () {
+    let id = $(this).data("listing");
+    let quantity = $(this).data("quantity");
+    let newQuantity = parseInt(quantity);
+    newQuantity--
+
+    console.log(quantity);
+
+    $.ajax("/api/listings/" + id, {
+      type: "PUT",
+      data: {
+        quantity: newQuantity
+      },
+    }).then(console.log("success"));
+    //   function () {
+    //   location.reload();
+    //   getCart();
+    // });
+
+    // if (newQuantity === 0) {
+    //   $(this).text("Out of Stock");
+    // } else {
+
+    //   newQuantity--;
+
+    //   $.ajax("/api/listings/" + id, {
+    //     type: "PUT",
+    //     data: {
+    //       quantity: newQuantity,
+    //     },
+
+    //   }).then(function () {
+    //     window.location.reload();
+    //   });
+    // }
+
+
+ 
+  });
   getCart();
 });
+

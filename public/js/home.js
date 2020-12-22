@@ -86,7 +86,7 @@ $(document).ready(function () {
 
   $(document).on("click", ".btn-success", function () {
     let id = $(this).data("id");
-    let newQuantity = $(this).data("quantity");
+    // let newQuantity = $(this).data("quantity");
     
       let getListingPromise = (id) => {
         return new Promise((resolve, reject) => {
@@ -96,7 +96,8 @@ $(document).ready(function () {
               price: data.price,
               category: data.category,
               url: data.url,
-              ListingId: data.id
+              ListingId: data.id,
+              ListingQuantity: data.quantity
             };
             console.log(cart);
             resolve(cart);

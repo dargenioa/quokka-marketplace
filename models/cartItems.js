@@ -28,6 +28,10 @@ module.exports = function (sequelize, DataTypes) {
 
       ListingId: {
         type: DataTypes.STRING,
+      },
+
+      ListingQuantity: {
+        type: DataTypes.STRING,
       }
     },
     {
