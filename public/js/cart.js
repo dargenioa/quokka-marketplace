@@ -35,6 +35,7 @@ $(document).ready(function () {
       url: "/api/cart-items/" + id,
     }).then(function () {
       // console.log("deleted");
+      location.reload();
       getCart();
     });
   });
