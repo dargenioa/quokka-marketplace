@@ -84,24 +84,12 @@ $(document).ready(function () {
         data: {
           quantity: listingQuantity,
         },
-      }).then(console.log("success"));
-
-      setTimeout(function () {
-        alert("Hello");
-
-        $(this).text("Purchased");
-      }, 3000);
-    });
-    // .then(() => {
-    //   $.ajax({
-    //     method: "DELETE",
-    //     url: "/api/cart-items/" + id,
-    //   }).then(function () {
-    //     location.reload();
-    //     getCart();
-    //   });
-    // });
+      }).then(setTimeout(() => {
+          alert("Thank you for your purchase!");
+          window.location.href = "/cart";
+      }, 1000)
+    );
   });
-
-  getCart();
+});
+getCart();
 });
