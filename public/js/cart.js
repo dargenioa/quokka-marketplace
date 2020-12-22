@@ -55,6 +55,7 @@ $(document).ready(function () {
       method: "DELETE",
       url: "/api/cart-items/" + id,
     }).then(function () {
+      // console.log("deleted");
       location.reload();
       getCart();
     });
