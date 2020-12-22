@@ -40,40 +40,41 @@ $(document).ready(function () {
     });
   });
 
-
   //Buy Button
 
   $(document).on("click", ".buy-item", function () {
     let idListing = $(this).data("listing");
     let id = $(this).data("id");
-    let quantity = $(this).data("quantity");
-    let newQuantity = parseInt(quantity);
-    newQuantity--
 
-    console.log(quantity);
+    let listingQuantity;
+    $.get("/api/listings/" + idListing, function (data) {
+      listingQuantity = data.quantity;
+    })
+      .then(() => {
+        listingQuantity--;
+        $.ajax("/api/listings/" + idListing, {
+          type: "PUT",
+          data: {
+            quantity: listingQuantity,
+          },
+        }).then(console.log("success"));
 
-    $.ajax("/api/listings/" + idListing, {
-      type: "PUT",
-      data: {
-        quantity: newQuantity
-      },
-    }).then(console.log("success"));
+        setTimeout(function () {
+          alert("Hello");
 
-    setTimeout(function () {
-      alert("Hello");
-
-    $.ajax({
-      method: "DELETE",
-      url: "/api/cart-items/" + id,
-    }).then(function () {
-      location.reload();
-      getCart();
-    });
-    }, 3000);
-  
+          $(this).text("Purchased");
+        }, 3000);
+      })
+      .then(() => {
+        $.ajax({
+          method: "DELETE",
+          url: "/api/cart-items/" + id,
+        }).then(function () {
+          location.reload();
+          getCart();
+        });
+      });
   });
-
 
   getCart();
 });
-
