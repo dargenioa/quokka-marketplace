@@ -43,6 +43,7 @@ module.exports = function (sequelize, DataTypes) {
     cartItem.belongsTo(models.User, {
       foreignKey: "UserId",
     });
+    
   };
 
   return cartItem;
