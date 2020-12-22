@@ -20,7 +20,7 @@ There are many packages to install which can be viewed in the package.json.  ple
 ```bash
 npm i
 ```
-
+Also keep in mind this application uses the cloudinary service which will need to have your cloud name, api_key, and api_secret in order to connect to our env variables and stored in a .env file you need to make.  please sign up for it [here](https://cloudinary.com/home-2).
 ## Usage 
 
 As either an unsigned in visitor or user, you can browse the latest items posted to the home page. You can sort these items by category in the cateogry dropdown if you wish, which will grab only the items of that category.  You can also get started by going to the sell.html page and using the search bar to search for items.  some reccomended items will appear but you can make the precision of the results down to one even one item.  
