@@ -231,5 +231,17 @@ router.delete("/api/cart-items/:id", function (req, res) {
     });
 });
 
-//UPDATE Cart
+//Update cart Items
+router.put("/api/cart-items/:id", function (req, res) {
+  db.cartItem
+    .update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    })
+    .then(function (dbItem) {
+      res.json(dbItem);
+    });
+});
+
 module.exports = router;
