@@ -109,23 +109,5 @@ $(document).ready(function () {
           console.log("Success");
         });
       });
-
-    // if (newQuantity === 0) {
-    //   $(this).text("Out of Stock");
-    // } else {
-
-    //   newQuantity--;
-
-    //   $.ajax("/api/listings/" + id, {
-    //     type: "PUT",
-    //     data: {
-    //       quantity: newQuantity,
-    //     },
-        
-    //   }).then(function () {
-    //     window.location.reload();
-    //   });
-    // }
-
   });
 });
