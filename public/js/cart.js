@@ -55,6 +55,10 @@ $(document).ready(function () {
       method: "DELETE",
       url: "/api/cart-items/" + id,
     }).then(function () {
+<<<<<<< HEAD
+      // console.log("deleted");
+=======
+>>>>>>> e412f8541f98ad90f73a4407dceb380ca33d5ccf
       location.reload();
       getCart();
     });
