@@ -1,18 +1,6 @@
 $(document).ready(function () {
   //Popover
   var popOverSettings = {
-<<<<<<< HEAD
-    placement: 'right',
-    container: 'body',
-    html: true,
-    selector: '[rel="popover"]', //Sepcify the selector here
-    content: function () {
-        return $('[data-content]').data("content");
-    }
-}
-
-  $('body').popover(popOverSettings);
-=======
     placement: "right",
     container: "body",
     html: true,
@@ -26,7 +14,6 @@ $(document).ready(function () {
   };
 
   $("body").popover(popOverSettings);
->>>>>>> 9435ae46a9acbff4daca7d2e116d0b2a8be33de5
 
   //Inital Table Generation
 
