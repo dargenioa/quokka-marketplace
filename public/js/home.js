@@ -1,4 +1,20 @@
 $(document).ready(function () {
+  //Popover
+  var popOverSettings = {
+    placement: "right",
+    container: "body",
+    html: true,
+    delay: {
+      hide: 1000,
+    },
+    selector: '[rel="popover"]', //Sepcify the selector here
+    content: function () {
+      return $("[data-content]").data("content");
+    },
+  };
+
+  $("body").popover(popOverSettings);
+
   //Inital Table Generation
 
   const generateListingTable = (data) => {
@@ -10,10 +26,12 @@ $(document).ready(function () {
         let date = new Date(currentUser.Listings[j].createdAt).toDateString();
         let button;
 
-        if (currentUser.Listings[j].quantity === 0) {
-          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" class="btn-danger">Out of Stock</button>`;
+        if (currentUser.Listings[j].quantity < 1) {
+          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" 
+          class="disabled btn btn-danger">Out of Stock</button>`;
         } else {
-          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity"${currentUser.Listings[j].quantity}" class="btn btn-success">Add to Cart</button>`;
+          button = `<button type="button" data-id="${currentUser.Listings[j].id}" data-quantity="${currentUser.Listings[j].quantity}" 
+          class="btn btn-success" data-placement="right" data-toggle="popover" rel="popover" data-content="Item added to cart">Add to Cart</button>`;
         }
         let listing = `<tr>
                 <td>${currentUser.Listings[j].name}</td>
@@ -41,9 +59,9 @@ $(document).ready(function () {
       let button;
 
       if (results[j].quantity === 0) {
-        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="btn-danger">Out of Stock</button>`;
+        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="disabled btn-danger">Out of Stock</button>`;
       } else {
-        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="cart btn btn-success">Add to Cart</button>`;
+        button = `<button type="button" data-id="${results[j].id}" data-quantity="${results[j].quantity}" class="btn btn-success">Add to Cart</button>`;
       }
 
       let listing = `<tr>
@@ -67,7 +85,7 @@ $(document).ready(function () {
     type: "GET",
   }).then(generateListingTable);
 
-  $(".cat").on("click", function () {
+  $(".dropdown-item").on("click", function () {
     let item = $(this).data("cat");
     console.log(item);
 
@@ -86,29 +104,33 @@ $(document).ready(function () {
 
   $(document).on("click", ".btn-success", function () {
     let id = $(this).data("id");
-    // let newQuantity = $(this).data("quantity");
     
-      let getListingPromise = (id) => {
-        return new Promise((resolve, reject) => {
-          $.get("/api/listings/" + id).then((data) => {
-            let cart = {
-              name: data.name,
-              price: data.price,
-              category: data.category,
-              url: data.url,
-              ListingId: data.id,
-              ListingQuantity: data.quantity
-            };
-            console.log(cart);
-            resolve(cart);
-          });
-        });
-      };
-  
-      getListingPromise(id).then((data) => {
-        $.post("/api/cart-items/", data).then(() => {
-          console.log("Success");
+    $(this).on("shown.bs.popover", function () {
+      setTimeout(function () {
+        $("[rel='popover']").popover("hide");
+      }, 1000);
+    });
+
+    let getListingPromise = (id) => {
+      return new Promise((resolve, reject) => {
+        $.get("/api/listings/" + id).then((data) => {
+          let cart = {
+            name: data.name,
+            price: data.price,
+            category: data.category,
+            url: data.url,
+            ListingId: data.id,
+          };
+
+          resolve(cart);
         });
       });
+    };
+
+    getListingPromise(id).then((data) => {
+      $.post("/api/cart-items/", data).then(() => {
+        console.log("Success");
+      });
+    });
   });
 });

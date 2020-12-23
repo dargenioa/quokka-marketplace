@@ -49,6 +49,14 @@ h6 {
   margin-top: 50px;
 }
 
+.table-responsive {
+  padding: 40px;
+  overflow: auto;
+
+
+}
+
+
 h5 {
   font-size: 50px;
   font-weight: bold;
@@ -64,6 +72,7 @@ h5 {
 
 .container-main {
   margin-top: 30px;
+  padding-bottom: 200px;
 }
 
 .container-products {
@@ -71,6 +80,7 @@ h5 {
   padding-left: 15%;
   margin-bottom: 30px;
   margin-top: 40px;
+  position: relative;
 }
 
 .container1,
@@ -84,8 +94,17 @@ footer {
   background-color: #232f3e;
   color: #fff;
   margin-top: 60px;
-  padding-top: 40px;
+  padding-top: 10px;
   font-size: 13px;
+  bottom: 0;
+  position:fixed;
+  height: 40px;
+  overflow:hidden;
+  transition-duration: 0.300s;
+}
+
+footer:hover {
+  height: 220px;
 }
 
 p {
@@ -133,6 +152,10 @@ span {
   margin-bottom: 20px;
 }
 
+.disabled{
+  pointer-events: none;
+}
+
 .main-content {
   min-height: 70vh;
   background: #f1f1f1;
@@ -173,12 +196,12 @@ h3 {
   margin-top: 10%;
   box-shadow: 0 0 20px #000000b3;
   padding: 30px;
-  height: 40vh;
+  height: 52vh;
   margin-bottom: 100px;
-  width: 70%;
+  width: 85%;
 }
 
-#whyQuoka {
+#whyQuokka {
   margin-top: 10px;
   font-size: 1.35714rem;
   font-weight: 700;
@@ -316,6 +339,12 @@ h3 {
   color: black;
 }
 
+.popover-body {
+  background-color: rgba(141, 202, 141, 0.384);
+  border: 1px gray solid;
+  border-radius: 5px;
+}
+
 #profileIntro {
   text-align: center;
   margin-bottom: 30px;
@@ -359,7 +388,7 @@ h3 {
     width: 90%;
     height: 100%;
     align-items: center;
-    margin-left: -10px;
+    /* margin-left: -10px; */
   }
 
   .container-slide {
@@ -411,6 +440,7 @@ h3 {
     height: auto;
     margin-bottom: 100px;
     width: 100%;
+    padding-bottom: 40px;
   }
   #whyQuoka {
     font-size: 12px;
@@ -422,5 +452,6 @@ h3 {
     display: block;
     text-align: center;
     margin: 10px auto;
+    padding-bottom: 40px;
   }
 }

@@ -185,6 +185,7 @@ router.delete("/api/listings/:id", function (req, res) {
     where: {
       id: req.params.id,
     },
+    include: [db.cartItem],
   }).then(function (dbListing) {
     res.json(dbListing);
   });
@@ -210,7 +211,6 @@ router.post("/api/cart-items", (req, res) => {
       category: req.body.category,
       url: req.body.url,
       ListingId: req.body.ListingId,
-      ListingQuantity: req.body.ListingQuantity,
       UserId: req.user.id,
     })
     .then((cartItem) => {
@@ -231,5 +231,17 @@ router.delete("/api/cart-items/:id", function (req, res) {
     });
 });
 
-//UPDATE Cart
+//Update cart Items
+router.put("/api/cart-items/:id", function (req, res) {
+  db.cartItem
+    .update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    })
+    .then(function (dbItem) {
+      res.json(dbItem);
+    });
+});
+
 module.exports = router;
