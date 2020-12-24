@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  $("#purchasedTable").hide();
 
   $("#purchaseTable").hide();
 
@@ -13,6 +14,7 @@ $(document).ready(function () {
       //Loop through Items
       for (i = 0; i < data.cartItems.length; i++) {
         if (data.cartItems[i].purchased) {
+          $("#purchasedTable").show();
           purchaseIndex++;
           $("#purchaseTable").show();
           let date = new Date(data.cartItems[i].createdAt).toDateString();
