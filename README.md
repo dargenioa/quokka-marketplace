@@ -31,7 +31,7 @@ This project's code is allowed to be "set free" using [The Unlicense](https://un
 
 ## Contributing
 
-Christopher-Lamb, danrgenioa, DevDan13, Gaven56, and Ibram Elias are the contributors for quokka-marketplace.  Please check the questions section to view our github profiles!  We are also open to any other contributors who wish to share their thoughts to make the project grow.
+Christopher-Lamb, dargenioa, DevDan13, Gaven56, and Ibram Elias are the contributors for quokka-marketplace.  Please check the questions section to view our github profiles!  We are also open to any other contributors who wish to share their thoughts to make the project grow.
 
 ## Test
 
@@ -41,4 +41,4 @@ To test please start by creating a user in the signup page. this can be reached 
 https://projecttwo-rutgers.herokuapp.com/
 <hr>
 
-Please checkout our GitHub profiles [DevDan13](https://github.com/DevDan13) [Gavin56](https://github.com/Gavin56) [danrgenioa](https://github.com/dargenioa) [Christopher-Lamb](https://github.com/Christopher-Lamb) and Ibram Elias for more of our work.
+Please checkout our GitHub profiles [DevDan13](https://github.com/DevDan13) [Gavin56](https://github.com/Gavin56) [dargenioa](https://github.com/dargenioa) [Christopher-Lamb](https://github.com/Christopher-Lamb) and Ibram Elias for more of our work.
